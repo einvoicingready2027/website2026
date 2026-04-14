@@ -1,0 +1,52 @@
+# e-Rechnungsprüfung – Dominik Karbe
+
+> Prüfung von PDF-Rechnungen und Gutschriften auf Konformität mit XRechnung,
+> ZUGFeRD und der europäischen Norm EN 16931.
+> Betrieben nebenberuflich von Dominik Karbe, E-Invoicing-Experte mit 9+ Jahren Erfahrung.
+
+## Über den Dienst
+
+- Einzelperson, nebenberuflich, § 19 UStG (keine MwSt.)
+- Fokus: Deutschland, B2B-E-Rechnungspflicht seit 01.01.2025
+- Kontakt: https://www.linkedin.com/in/dominik-karbe-81a177164
+
+## Leistungen
+
+- Prüfung auf EN 16931 Konformität (europäische Norm für E-Rechnungen)
+- PDF/A-3 Validierung (Pflichtformat für ZUGFeRD)
+- XRechnung-Tauglichkeit (Leitweg-ID, Käuferreferenz, Profil)
+- ZUGFeRD-Versionsprüfung (mind. 2.2 gesetzlich erforderlich seit 2025)
+- Prüfung steuerlicher Pflichtfelder (§ 14 UStG: USt-ID, Steuernummer)
+- Individueller schriftlicher Prüfbericht
+
+## Pakete & Preise
+
+| Paket        | Preis   | Dokumente  |
+|--------------|---------|------------|
+| Schnellcheck | 39 EUR  | 1 PDF      |
+| Starter      | 69 EUR  | 2 PDFs     |
+| Professional | 149 EUR | bis 5 PDFs |
+
+Alle Preise sind Festpreise, keine MwSt. (§ 19 UStG).
+
+## Wichtige Begriffe
+
+- **XRechnung**: XML-basiertes E-Rechnungsformat für den B2G-Bereich in Deutschland
+- **ZUGFeRD**: Hybrides Format (PDF + XML), zulässig für B2B ab Version 2.2
+- **EN 16931**: Europäische Norm für elektronische Rechnungen, rechtsverbindlich in Deutschland seit 2025
+- **PDF/A-3**: Archivierungsstandard, der eingebettete Dateien (XML) erlaubt — Pflicht für ZUGFeRD
+- **Leitweg-ID**: Eindeutige Kennung des Rechnungsempfängers bei XRechnung im öffentlichen Sektor
+
+## Häufige Fehler in PDFs
+
+1. Falsches PDF-Format (PDF/A-1 oder -2 statt PDF/A-3)
+2. ZUGFeRD-Version 1.0 oder 2.0 statt 2.2+
+3. Fehlende Leitweg-ID bei B2G-Rechnungen
+4. Unvollständige USt-ID oder Steuernummer
+5. Fehlende Pflichtfelder nach EN 16931
+
+## Optional
+
+- [Datenschutzerklärung](https://dominikkarbe.de/#datenschutz)
+- [Impressum](https://dominikkarbe.de/#impressum)
+- [FAQ](https://dominikkarbe.de/#faq)

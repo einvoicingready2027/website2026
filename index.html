@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── SEO & GEO Meta ──────────────────────────────── -->
+  <title>PDF-Rechnungen auf XRechnung & ZUGFeRD prüfen | Dominik Karbe</title>
+  <meta name="description" content="Dominik Karbe prüft Ihre PDF-Rechnungen auf Konformität mit EN 16931, XRechnung und ZUGFeRD – nebenberuflich, transparent und persönlich. Ab 39 Euro Festpreis.">
+  <meta name="author" content="Dominik Karbe">
+  <meta name="keywords" content="XRechnung, ZUGFeRD, EN 16931, E-Rechnung Prüfung, PDF Validierung, E-Rechnungspflicht 2025, B2B Rechnung">
+  <link rel="canonical" href="https://dominikkarbe.de/">
+
+  <!-- ── Open Graph ──────────────────────────────────── -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PDF-Rechnungen auf XRechnung & ZUGFeRD prüfen | Dominik Karbe">
+  <meta property="og:description" content="Experten-Prüfung Ihrer Rechnungs-PDFs gemäß EN 16931. XRechnung & ZUGFeRD 2.2+. Festpreis, persönliche Rückmeldung.">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- ── Schema.org structured data (GEO/LLM-optimiert) ─ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "e-Rechnungsprüfung – Dominik Karbe",
+    "description": "Prüfung von PDF-Rechnungen und Gutschriften auf Konformität mit XRechnung, ZUGFeRD und der europäischen Norm EN 16931. Nebenberuflicher Dienst gemäß §19 UStG.",
+    "url": "https://dominikkarbe.de",
+    "sameAs": ["https://www.linkedin.com/in/dominik-karbe-81a177164"],
+    "founder": {
+      "@type": "Person",
+      "name": "Dominik Karbe",
+      "jobTitle": "E-Invoicing Experte",
+      "sameAs": "https://www.linkedin.com/in/dominik-karbe-81a177164"
+    },
+    "areaServed": "DE",
+    "priceRange": "39–149 EUR",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Prüfpakete",
+      "itemListElement": [
+        {"@type":"Offer","name":"Schnellcheck","price":"39","priceCurrency":"EUR","description":"Prüfung eines PDF-Dokuments auf EN 16931 Konformität"},
+        {"@type":"Offer","name":"Starter-Paket","price":"69","priceCurrency":"EUR","description":"Prüfung von 2 PDF-Dokumenten inkl. XRechnung & ZUGFeRD Eignung"},
+        {"@type":"Offer","name":"Professional","price":"149","priceCurrency":"EUR","description":"Prüfung von bis zu 5 PDFs inkl. Beratungsgespräch"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Was ist eine E-Rechnung gemäß EN 16931?","acceptedAnswer":{"@type":"Answer","text":"Eine E-Rechnung im Sinne des deutschen Gesetzgebers ist eine Rechnung in einem strukturierten elektronischen Format, das die europäische Norm EN 16931 erfüllt. Seit dem 1. Januar 2025 sind XRechnung und ZUGFeRD (ab Version 2.2) die zulässigen Formate für B2B-Transaktionen in Deutschland."}},
+      {"@type":"Question","name":"Was ist der Unterschied zwischen XRechnung und ZUGFeRD?","acceptedAnswer":{"@type":"Answer","text":"XRechnung ist ein rein XML-basiertes Format für den B2G-Bereich. ZUGFeRD ist ein hybrides Format: lesbare PDF-Seite mit eingebetteter XML-Datei, zulässig ab Version 2.2 für B2B."}},
+      {"@type":"Question","name":"Welche PDF-Version ist für ZUGFeRD erforderlich?","acceptedAnswer":{"@type":"Answer","text":"Das PDF muss dem Standard PDF/A-3 entsprechen. Ältere Versionen (PDF/A-1, PDF/A-2) können keine eingebetteten XML-Dateien tragen und sind daher für ZUGFeRD nicht geeignet."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<!-- ambient blob -->
+<div class="ambient-blob" aria-hidden="true"></div>
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect width="26" height="26" rx="6"/><path d="M7 18V8h5c2.3 0 3.7 1.1 3.7 3 0 2-1.5 3.1-3.7 3.1H9.2V18H7zm2.2-4.9H12c1.2 0 1.9-.55 1.9-1.4s-.7-1.3-1.9-1.3H9.2v2.7z"/><path d="M17.5 8h2v10h-2z" fill-opacity=".45"/></svg>
+      e-Rechnungsprüfung
+    </a>
+    <div class="nav-links">
+      <a href="#leistungen" class="hide-sm">Leistungen</a>
+      <a href="#preise" class="hide-sm">Preise</a>
+      <a href="#ueber-mich" class="hide-sm">Über mich</a>
+      <a href="#einreichen" class="nav-cta">PDF einreichen</a>
+      <button class="theme-btn" data-theme-btn aria-label="Design wechseln">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="reveal">
+      <div class="hero-kicker">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        EN 16931 · XRechnung · ZUGFeRD
+      </div>
+      <h1>Ihre Rechnung.<br><em>Normkonform.</em></h1>
+      <p class="hero-lead">Ich prüfe Ihre PDF-Rechnungen auf Konformität mit der europäischen Norm EN&nbsp;16931 und bereite sie für XRechnung oder ZUGFeRD vor. Persönlich, transparent, zum Festpreis.</p>
+      <div class="hero-actions">
+        <a href="#einreichen" class="btn btn-solid">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          PDF einreichen
+        </a>
+        <a href="#preise" class="btn btn-ghost">Preise ansehen</a>
+      </div>
+    </div>
+    <div class="hero-panel reveal">
+      <div class="panel-label">Beispiel · Prüfbericht</div>
+      <ul class="check-rows">
+        <li class="check-row">
+          <span class="check-dot ok">✓</span>
+          <div><div class="check-name">PDF/A-3 Konformität</div><div class="check-sub">Dateiformat entspricht Archivstandard</div></div>
+        </li>
+        <li class="check-row">
+          <span class="check-dot ok">✓</span>
+          <div><div class="check-name">EN 16931 Pflichtfelder</div><div class="check-sub">Alle 19 Pflichtfelder vorhanden</div></div>
+        </li>
+        <li class="check-row">
+          <span class="check-dot warn">!</span>
+          <div><div class="check-name">ZUGFeRD-Version</div><div class="check-sub">Version 2.0 erkannt — mind. 2.2 erforderlich</div></div>
+        </li>
+        <li class="check-row">
+          <span class="check-dot ok">✓</span>
+          <div><div class="check-name">Steuerkennzeichen</div><div class="check-sub">USt-ID und Steuernummer vollständig</div></div>
+        </li>
+        <li class="check-row">
+          <span class="check-dot ok">✓</span>
+          <div><div class="check-name">Leitweg-ID (XRechnung)</div><div class="check-sub">Gültig und korrekt formatiert</div></div>
+        </li>
+      </ul>
+      <div class="panel-stats">
+        <div><div class="stat-num">9+</div><div class="stat-lbl">Jahre Erfahrung</div></div>
+        <div><div class="stat-num">EN 16931</div><div class="stat-lbl">Normkonform</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST ─────────────────────────────────────────── -->
+<div class="trust-strip">
+  <div class="container trust-inner stagger">
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      DSGVO-konform
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Rückmeldung innerhalb 48h
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      XRechnung & ZUGFeRD 2.3
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      Festpreis — keine versteckten Kosten
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      § 19 UStG — keine MwSt.
+    </div>
+  </div>
+</div>
+
+<!-- ── LEISTUNGEN ────────────────────────────────────── -->
+<section id="leistungen">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Leistungen</div>
+      <h2 class="section-h">Was ich für Sie prüfe</h2>
+      <p class="section-sub">Seit dem 1. Januar 2025 sind E-Rechnungen im B2B-Bereich Pflicht. Ich stelle sicher, dass Ihre PDFs alle normativen Anforderungen erfüllen.</p>
+    </div>
+    <div class="bento stagger">
+      <div class="bento-card w6">
+        <div class="bento-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="bento-title">EN 16931 Konformität</div>
+        <p class="bento-desc">Vollständige Prüfung aller Pflichtfelder gemäß der europäischen Norm EN 16931 — die rechtliche Grundlage für XRechnung und ZUGFeRD in Deutschland.</p>
+      </div>
+      <div class="bento-card w6">
+        <div class="bento-icon" style="background:var(--pale-green);color:var(--pale-green-t)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="bento-title">PDF/A-3 Validierung</div>
+        <p class="bento-desc">Prüfung ob Ihr Dokument dem Archivstandard PDF/A-3 entspricht, der für eingebettete XML-Dateien in ZUGFeRD zwingend erforderlich ist.</p>
+      </div>
+      <div class="bento-card w4">
+        <div class="bento-icon" style="background:var(--pale-yellow);color:var(--pale-yellow-t)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 13 9 20 9"/><path d="M20 14.5V7l-5-5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h6"/><circle cx="17" cy="17" r="3"/><path d="m21 21-1.5-1.5"/></svg></div>
+        <div class="bento-title">XRechnung-Tauglichkeit</div>
+        <p class="bento-desc">Analyse aller erforderlichen Felder inkl. Leitweg-ID, Käuferreferenz und Profilprüfung.</p>
+      </div>
+      <div class="bento-card w4">
+        <div class="bento-icon" style="background:var(--pale-red);color:var(--pale-red-t)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+        <div class="bento-title">ZUGFeRD 2.2+ Prüfung</div>
+        <p class="bento-desc">Validierung der ZUGFeRD-Version. Ältere Versionen (1.0, 2.0) sind seit 2025 nicht mehr gesetzlich zulässig.</p>
+      </div>
+      <div class="bento-card w4">
+        <div class="bento-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <div class="bento-title">Steuerliche Anforderungen</div>
+        <p class="bento-desc">Kontrolle von USt-ID, Steuernummer, Steuerkennzeichen und Steuerbeträgen gemäß § 14 UStG.</p>
+      </div>
+      <div class="bento-card w12">
+        <div class="bento-title">Individueller Prüfbericht</div>
+        <p class="bento-desc">Sie erhalten einen klaren, schriftlichen Bericht mit allen Befunden, konkreten Handlungsempfehlungen und direkt umsetzbaren Hinweisen — kein generisches Template, sondern auf Ihr Dokument zugeschnitten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ── ABLAUF ────────────────────────────────────────── -->
+<section id="ablauf" class="how-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Ablauf</div>
+      <h2 class="section-h">So einfach funktioniert es</h2>
+    </div>
+    <div class="steps-grid stagger">
+      <div class="step-card">
+        <div class="step-n">01</div>
+        <div class="step-title">PDF einreichen</div>
+        <p class="step-desc">Rechnung oder Gutschrift als PDF hochladen — zusammen mit Ihren Kontaktdaten.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-n">02</div>
+        <div class="step-title">Manuelle Prüfung</div>
+        <p class="step-desc">Ich prüfe Ihr Dokument anhand aller EN-16931-Kriterien, XRechnung- und ZUGFeRD-Spezifikationen.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-n">03</div>
+        <div class="step-title">Prüfbericht erhalten</div>
+        <p class="step-desc">Innerhalb von 48 Stunden erhalten Sie einen detaillierten Bericht per E-Mail.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-n">04</div>
+        <div class="step-title">Umsetzung</div>
+        <p class="step-desc">Offene Fragen beantworte ich persönlich — damit Ihre nächsten E-Rechnungen vom ersten Versand an normkonform sind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ── PREISE ────────────────────────────────────────── -->
+<section id="preise">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Preise</div>
+      <h2 class="section-h">Transparente Pakete</h2>
+      <p class="section-sub">Festpreise, einmalig. Diese Leistung wird nebenberuflich erbracht — gemäß § 19 UStG wird keine Mehrwertsteuer ausgewiesen.</p>
+    </div>
+    <div class="pricing-grid stagger">
+      <div class="price-card">
+        <div class="price-name">Schnellcheck</div>
+        <div class="price-amt">39 €</div>
+        <div class="price-note">Festpreis · 1 Dokument</div>
+        <p class="price-desc">Erster Überblick — ideal wenn Sie wissen möchten, ob Ihre Rechnung grundsätzlich auf dem richtigen Weg ist.</p>
+        <ul class="price-list">
+          <li>1 PDF-Dokument</li>
+          <li>EN 16931 Konformitätsprüfung</li>
+          <li>PDF/A-3 Validierung</li>
+          <li>Top-3-Befunde als Fazit</li>
+          <li>Rückmeldung innerhalb 48h</li>
+        </ul>
+        <a href="#einreichen" class="price-cta ghost">PDF einreichen</a>
+        <div class="price-footnote">Zahlung nach Prüfung per Rechnung</div>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-tag">Empfohlen</div>
+        <div class="price-name">Starter-Paket</div>
+        <div class="price-amt">69 €</div>
+        <div class="price-note">Festpreis · 2 Dokumente</div>
+        <p class="price-desc">Das optimale Einstiegspaket für Unternehmen, die zwei Rechnungsvorlagen prüfen und ihren Prozess sicher aufstellen möchten.</p>
+        <ul class="price-list">
+          <li><strong>2 PDF-Dokumente</strong></li>
+          <li>Vollständiger EN 16931 Bericht</li>
+          <li>XRechnung & ZUGFeRD Eignung</li>
+          <li>Steuerliche Pflichtfeldprüfung</li>
+          <li>Individuelle Handlungsempfehlungen</li>
+          <li>30 Min. Q&A (optional)</li>
+          <li>Rückmeldung innerhalb 48h</li>
+        </ul>
+        <a href="#einreichen" class="price-cta">Paket buchen</a>
+        <div class="price-footnote">Zahlung nach Prüfung per Rechnung</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Professional</div>
+        <div class="price-amt">149 €</div>
+        <div class="price-note">Festpreis · bis 5 Dokumente</div>
+        <p class="price-desc">Für Unternehmen mit mehreren Dokumenttypen oder dem Wunsch nach einem umfassenden Prozess-Audit.</p>
+        <ul class="price-list">
+          <li><strong>Bis zu 5 PDFs</strong></li>
+          <li>Alle Leistungen aus Starter</li>
+          <li>Leitweg-ID Prüfung (B2G)</li>
+          <li>Dokumenttypen-Vergleich</li>
+          <li>60 Min. Beratungsgespräch</li>
+          <li>Checkliste für Ihr Team</li>
+          <li>Rückmeldung innerhalb 24h</li>
+        </ul>
+        <a href="#einreichen" class="price-cta ghost">Anfrage stellen</a>
+        <div class="price-footnote">Zahlung nach Prüfung per Rechnung</div>
+      </div>
+    </div>
+    <p style="margin-top:1.25rem;font-size:.75rem;color:var(--ink-faint);font-family:var(--font-mono)">Weitere PDFs im Starter-Paket: je 25 € pro Dokument · Rahmenverträge auf Anfrage</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ── ÜBER MICH ──────────────────────────────────────── -->
+<section id="ueber-mich" class="about-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Über mich</div>
+      <h2 class="section-h">Dominik Karbe</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <div class="about-avatar">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="80" aria-hidden="true">
+            <circle cx="40" cy="30" r="14" fill="var(--ink-faint)"/>
+            <ellipse cx="40" cy="62" rx="22" ry="14" fill="var(--ink-faint)"/>
+          </svg>
+        </div>
+        <div class="about-name">Dominik Karbe</div>
+        <div class="about-role">E-Invoicing Experte · b4value.net GmbH</div>
+        <a href="https://www.linkedin.com/in/dominik-karbe-81a177164" target="_blank" rel="noopener noreferrer" class="about-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn-Profil
+        </a>
+      </div>
+      <div>
+        <p class="about-body">Ich bin Dominik Karbe — erfahrener E-Invoicing-Experte mit über 9 Jahren Projekterfahrung in der Umsetzung komplexer Rechnungsprozesse und ERP-Integrationen. Als Project & Partner Success Manager bei der b4value.net GmbH begleite ich Unternehmen täglich bei der digitalen Transformation ihrer Rechnungsstellung.</p>
+        <p class="about-body">Mein Fokus liegt auf der Anbindung von Workflowsystemen und der Beratung rund um die E-Rechnungspflicht. Die Einführung der obligatorischen E-Rechnung in Deutschland ab 2025 beobachte ich seit Jahren — und helfe Unternehmen, den Übergang normkonform und reibungslos zu gestalten. Diese Prüfleistung biete ich nebenberuflich an.</p>
+        <div class="tag-row">
+          <span class="tag">XRechnung</span>
+          <span class="tag">ZUGFeRD</span>
+          <span class="tag">EN 16931</span>
+          <span class="tag">ERP-Integration</span>
+          <span class="tag">E-Invoicing</span>
+          <span class="tag">Workflow-Systeme</span>
+          <span class="tag">B2B / B2G</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ── FAQ ───────────────────────────────────────────── -->
+<section id="faq">
+  <div class="container--sm">
+    <div class="reveal">
+      <div class="label">FAQ</div>
+      <h2 class="section-h">Häufige Fragen</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Was ist eine E-Rechnung gemäß EN 16931?</summary>
+        <div class="faq-body">Eine E-Rechnung im Sinne des deutschen Gesetzgebers ist eine Rechnung in einem strukturierten elektronischen Format, das die europäische Norm EN 16931 erfüllt. Seit dem 1. Januar 2025 sind XRechnung und ZUGFeRD (ab Version 2.2) die zulässigen Formate für B2B-Transaktionen in Deutschland. Ein einfaches PDF ohne XML-Daten gilt seitdem nicht mehr als E-Rechnung.</div>
+      </details>
+      <details>
+        <summary>Was ist der Unterschied zwischen XRechnung und ZUGFeRD?</summary>
+        <div class="faq-body">XRechnung ist ein rein XML-basiertes Format ohne visuelle Darstellung — es richtet sich vor allem an die öffentliche Verwaltung (B2G). ZUGFeRD ist ein hybrides Format: eine lesbare PDF-Seite mit eingebetteter XML-Datei. Für den B2B-Bereich ist ZUGFeRD ab Version 2.2 zulässig. Beide Formate müssen der EN 16931 entsprechen.</div>
+      </details>
+      <details>
+        <summary>Welche PDF-Version ist für ZUGFeRD erforderlich?</summary>
+        <div class="faq-body">Das PDF muss dem Standard PDF/A-3 entsprechen. Ältere Versionen (PDF/A-1 oder PDF/A-2) können keine eingebetteten XML-Dateien tragen und sind daher für ZUGFeRD nicht geeignet. Dies ist einer der häufigsten Fehler in der Praxis.</div>
+      </details>
+      <details>
+        <summary>Kann ich auch Gutschriften prüfen lassen?</summary>
+        <div class="faq-body">Ja. Das Formular unterstützt sowohl Rechnungen als auch Gutschriften. Die Prüfkriterien gemäß EN 16931 gelten für beide Dokumenttypen gleichermaßen.</div>
+      </details>
+      <details>
+        <summary>Wie lange dauert die Prüfung?</summary>
+        <div class="faq-body">Im Standard-Paket erhalten Sie Ihren Prüfbericht innerhalb von 48 Stunden. Im Professional-Paket priorisiere ich Ihren Auftrag — Rückmeldung innerhalb von 24 Stunden.</div>
+      </details>
+      <details>
+        <summary>Fallen Steuern auf den Preis an?</summary>
+        <div class="faq-body">Nein. Diese Prüfleistung wird nebenberuflich erbracht. Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen. Die angegebenen Preise sind Festpreise.</div>
+      </details>
+      <details>
+        <summary>Sind meine Daten sicher?</summary>
+        <div class="faq-body">Die Übertragung erfolgt verschlüsselt. Ihre Daten und Dokumente werden ausschließlich für die Prüfung verwendet und nicht an Dritte zu Werbezwecken weitergegeben. Die Verarbeitung erfolgt DSGVO-konform — Details finden Sie in der Datenschutzerklärung.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ── FORMULAR ──────────────────────────────────────── -->
+<section id="einreichen">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:2.5rem">
+      <div class="label" style="justify-content:center;display:flex">Dokument einreichen</div>
+      <h2 class="section-h">PDF jetzt hochladen</h2>
+      <p class="section-sub" style="margin-inline:auto;text-align:center">Füllen Sie das Formular aus und laden Sie Ihre PDF-Rechnung oder Gutschrift hoch. Rückmeldung innerhalb von 48 Stunden.</p>
+    </div>
+    <div class="form-wrap reveal">
+      <div class="f-alert ok" id="alert-success" role="alert" style="display:none">
+        <span>✓</span>
+        <div><strong>Vielen Dank.</strong> Ihr Dokument wurde erfolgreich eingereicht. Sie erhalten eine Rückmeldung innerhalb von 48 Stunden.</div>
+      </div>
+      <div class="f-alert err" id="alert-error" role="alert" style="display:none">
+        <span>!</span>
+        <div><strong>Fehler beim Senden.</strong> Bitte versuchen Sie es erneut oder kontaktieren Sie mich über LinkedIn.</div>
+      </div>
+      <form id="uploadForm" novalidate>
+        <div class="form-grid">
+          <div class="f-card">
+            <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="f-head-title">Persönliche Daten</div></div>
+            <div class="field">
+              <label>Vorname <span class="req">*</span></label>
+              <input type="text" name="Vorname" placeholder="Ihr Vorname" required>
+              <div class="error-msg">Pflichtfeld</div>
+            </div>
+            <div class="field">
+              <label>Nachname <span class="req">*</span></label>
+              <input type="text" name="Nachname" placeholder="Ihr Nachname" required>
+              <div class="error-msg">Pflichtfeld</div>
+            </div>
+            <div class="field">
+              <label>E-Mail-Adresse</label>
+              <input type="email" name="Ihre Email" placeholder="ihre@email.de">
+              <div class="error-msg">Bitte gültige E-Mail eingeben</div>
+            </div>
+          </div>
+          <div class="f-card">
+            <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="f-head-title">Adresse</div></div>
+            <div class="field">
+              <label>Straße & Hausnummer</label>
+              <input type="text" name="Strasse" placeholder="Musterstraße 12">
+            </div>
+            <div class="row-2">
+              <div class="field">
+                <label>PLZ</label>
+                <input type="number" name="PLZ" placeholder="68163">
+              </div>
+              <div class="field">
+                <label>Ort</label>
+                <input type="text" name="Ort" placeholder="Mannheim">
+              </div>
+            </div>
+            <div class="field">
+              <label>Land</label>
+              <input type="text" name="Land" placeholder="Deutschland">
+            </div>
+          </div>
+          <div class="f-card">
+            <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="f-head-title">Firmendaten</div></div>
+            <div class="field">
+              <label>Firmenbezeichnung</label>
+              <input type="text" name="Firmenbezeichnung" placeholder="Name Ihrer Firma">
+            </div>
+            <div class="field">
+              <label>Branche</label>
+              <input type="text" name="Branche" placeholder="z. B. IT, Handel, Dienstleistung">
+            </div>
+            <div class="field">
+              <label>Rechnungsvolumen / Jahr (ca.)</label>
+              <input type="number" name="Volumen" placeholder="z. B. 50000">
+            </div>
+          </div>
+          <div class="f-card">
+            <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="f-head-title">Dokument</div></div>
+            <div class="field">
+              <label>Dokumenttyp <span class="req">*</span></label>
+              <div class="sel-wrap">
+                <select name="Dokumenttyp" required>
+                  <option value="">Bitte wählen…</option>
+                  <option value="Rechnung">Rechnung</option>
+                  <option value="Gutschrift">Gutschrift</option>
+                </select>
+              </div>
+              <div class="error-msg">Bitte Dokumenttyp wählen</div>
+            </div>
+            <div class="field">
+              <label>PDF hochladen <span class="req">*</span></label>
+              <div class="file-drop" id="fileDrop">
+                <input type="file" name="Dokument-PDF" accept=".pdf" required id="fileInput">
+                <div class="drop-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+                <div class="drop-text">PDF ablegen oder klicken</div>
+                <div class="drop-hint">Nur .pdf · max. 10 MB</div>
+                <div class="file-name" id="fileName"></div>
+              </div>
+              <div class="error-msg" id="fileError">Bitte PDF hochladen</div>
+            </div>
+          </div>
+        </div>
+        <div class="submit-bar">
+          <div class="submit-info">
+            <strong>Bereit zum Einreichen?</strong>
+            Felder mit * sind Pflichtfelder.
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">Dokument einreichen →</button>
+        </div>
+      </form>
+      <div class="f-footer">Powered by n8n · DSGVO-konform · <a href="#datenschutz">Datenschutzerklärung</a></div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ── IMPRESSUM ─────────────────────────────────────── -->
+<section id="impressum" class="prose-section">
+  <div class="container--sm">
+    <div class="reveal">
+      <div class="label">Rechtliches</div>
+      <h2 class="section-h">Impressum</h2>
+      <p class="section-sub">Angaben gemäß § 5 TMG</p>
+    </div>
+    <div class="prose reveal">
+      <h3>Verantwortlich</h3>
+      <p><strong>Dominik Karbe</strong><br>
+      (Anschrift bitte hier ergänzen)<br>
+      Deutschland</p>
+      <p><strong>Kontakt:</strong> Bevorzugter Kontaktweg über <a href="https://www.linkedin.com/in/dominik-karbe-81a177164" target="_blank" rel="noopener">LinkedIn</a></p>
+      <h3>Umsatzsteuer</h3>
+      <p>Diese Tätigkeit wird <strong>nebenberuflich</strong> ausgeübt. Es gilt die Kleinunternehmerregelung nach <strong>§ 19 UStG</strong>; daher wird keine Umsatzsteuer ausgewiesen und keine USt-IdNr. benötigt.</p>
+      <h3>Haftungshinweis</h3>
+      <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links. Für den Inhalt verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ── DATENSCHUTZ ───────────────────────────────────── -->
+<section id="datenschutz" class="prose-section">
+  <div class="container--sm">
+    <div class="reveal">
+      <div class="label">Datenschutz</div>
+      <h2 class="section-h">Datenschutzerklärung</h2>
+    </div>
+    <div class="prose reveal">
+      <h3>1. Verantwortlicher</h3>
+      <p><strong>Dominik Karbe</strong> (Anschrift siehe Impressum)<br>
+      Kontakt: <a href="https://www.linkedin.com/in/dominik-karbe-81a177164" target="_blank" rel="noopener">LinkedIn-Profil</a><br>
+      Die Leistungen werden nebenberuflich als Kleinunternehmer nach § 19 UStG erbracht.</p>
+
+      <h3>2. Art und Zweck der Datenverarbeitung</h3>
+      <p>Beim Absenden des Formulars werden verarbeitet:</p>
+      <ul>
+        <li>Stammdaten (Vor- und Nachname)</li>
+        <li>Kontaktdaten (E-Mail-Adresse, optional Adressdaten)</li>
+        <li>Firmendaten (Firmenbezeichnung, Branche, Rechnungsvolumen)</li>
+        <li>Hochgeladene PDF-Rechnungen bzw. Gutschriften</li>
+        <li>Technische Metadaten: Vorgangs-ID, Einreichungszeitpunkt (Berliner Zeit)</li>
+      </ul>
+      <p>Die Verarbeitung dient ausschließlich der Prüfung Ihrer Rechnungsdokumente und der Kommunikation zur Auftragserfüllung.</p>
+
+      <h3>3. Rechtsgrundlage</h3>
+      <p>Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche Maßnahmen).</p>
+
+      <h3>4. Empfänger der Daten</h3>
+      <p>Die Daten werden in einem <strong>n8n-Workflow</strong> verarbeitet und anschließend in einer <strong>Airtable-Datenbank</strong> gespeichert. Weitergabe an Dritte zu Werbezwecken findet nicht statt.</p>
+
+      <h3>5. Speicherdauer</h3>
+      <p>Daten werden nach Abschluss des Vorgangs bis zu 3 Jahre aufbewahrt, danach gelöscht — soweit keine gesetzlichen Aufbewahrungsfristen entgegenstehen.</p>
+
+      <h3>6. Ihre Rechte</h3>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15 ff. DSGVO). Anfragen richten Sie bitte über LinkedIn an mich.</p>
+
+      <h3>7. Beschwerderecht</h3>
+      <p>Sie können Beschwerde bei einer Datenschutzaufsichtsbehörde einlegen.</p>
+
+      <h3>8. SSL-Verschlüsselung</h3>
+      <p>Die Website sollte über HTTPS aufgerufen werden. Achten Sie bei der Bereitstellung auf eine entsprechende Serverkonfiguration.</p>
+
+      <div class="prose-note">Hinweis: Diese Datenschutzerklärung ist ein Muster und ersetzt keine individuelle Rechtsberatung. Bitte lassen Sie den Text bei Unsicherheit juristisch prüfen.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────── -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 Dominik Karbe · e-Rechnungsprüfung</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/dominik-karbe-81a177164" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#faq">FAQ</a>
+      <a href="#impressum">Impressum</a>
+      <a href="#datenschutz">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
