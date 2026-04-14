@@ -1,12 +1,9 @@
-
 'use strict';
 
-// ── Theme ─────────────────────────────────────────────
 (function(){
   const root = document.documentElement;
   const btn  = document.querySelector('[data-theme-btn]');
-  let theme  = localStorage.getItem('theme') ||
-               (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  let theme  = localStorage.getItem('theme') || 'light';
 
   function apply(t){
     root.setAttribute('data-theme', t);
@@ -22,21 +19,15 @@
   });
 })();
 
-// ── Scroll-entry (IntersectionObserver) ──────────────
 (function(){
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if(e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
-
   document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
 })();
 
-// ── Form logic ────────────────────────────────────────
 const WEBHOOK_URL = 'https://helped-evident-cobra.ngrok-free.app/webhook-test/a1b2c3d4-e5f6-7890-abcd-ef1234567890';
 
 let _zaehler = 0;
@@ -46,13 +37,13 @@ function genVorgangsId(){
   return year + String(_zaehler).padStart(6,'0');
 }
 
-const form      = document.getElementById('uploadForm');
-const submitBtn = document.getElementById('submitBtn');
-const fileInput = document.getElementById('fileInput');
-const fileDrop  = document.getElementById('fileDrop');
-const fileNameEl= document.getElementById('fileName');
-const alertOk   = document.getElementById('alert-success');
-const alertErr  = document.getElementById('alert-error');
+const form       = document.getElementById('uploadForm');
+const submitBtn  = document.getElementById('submitBtn');
+const fileInput  = document.getElementById('fileInput');
+const fileDrop   = document.getElementById('fileDrop');
+const fileNameEl = document.getElementById('fileName');
+const alertOk    = document.getElementById('alert-success');
+const alertErr   = document.getElementById('alert-error');
 
 if(form){
   fileInput.addEventListener('change', () => {
@@ -100,15 +91,12 @@ if(form){
     let ok = true;
     form.querySelectorAll('input[required], select[required]').forEach(el => { if(!validateField(el)) ok = false });
     if(!ok) return;
-
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird eingereicht…';
-
     const data = {};
     new FormData(form).forEach((v,k) => { if(!(v instanceof File)) data[k] = v });
     data['Eingereicht_am'] = new Date().toLocaleString('sv-SE', { timeZone:'Europe/Berlin', hour12:false }).replace(' ','T');
     data['Vorgangs_ID']    = genVorgangsId();
-
     const file = fileInput.files[0];
     if(file){
       const reader = new FileReader();
@@ -118,9 +106,7 @@ if(form){
         await send(data);
       };
       reader.readAsDataURL(file);
-    } else {
-      await send(data);
-    }
+    } else { await send(data); }
   });
 
   async function send(data){
@@ -136,11 +122,11 @@ if(form){
         fileNameEl.style.display = 'none';
         fileDrop.classList.remove('has-file');
         form.querySelectorAll('.field').forEach(f => f.classList.remove('has-error'));
-      } else { showAlert('err') }
-    } catch { showAlert('err') }
+      } else { showAlert('err'); }
+    } catch { showAlert('err'); }
     finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Dokument einreichen →';
+      submitBtn.textContent = 'Jetzt einreichen →';
     }
   }
 }
