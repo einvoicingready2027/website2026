@@ -4,7 +4,7 @@
 (function(){
   const root = document.documentElement;
   const btn  = document.querySelector('[data-theme-btn]');
-  let theme  = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  let theme  = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
   function apply(t){
     root.setAttribute('data-theme', t);
     if(btn) btn.innerHTML = t==='dark'
