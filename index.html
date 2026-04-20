@@ -33,7 +33,7 @@
       "name": "Prüfpakete",
       "itemListElement": [
         {"@type":"Offer","name":"Schnellcheck","price":"39","priceCurrency":"EUR"},
-        {"@type":"Offer","name":"Starter-Paket","price":"69","priceCurrency":"EUR"},
+        {"@type":"Offer","name":"Starter","price":"69","priceCurrency":"EUR"},
         {"@type":"Offer","name":"Professional","price":"149","priceCurrency":"EUR"}
       ]
     }
@@ -201,12 +201,12 @@
           <li>Top-3-Befunde als Fazit</li>
           <li>Persönliche Rückmeldung</li>
         </ul>
-        <a href="#einreichen" class="price-cta ghost">PDF einreichen</a>
+        <a href="#einreichen" class="price-cta ghost" data-pkg="Schnellcheck">Zum Formular</a>
         <div class="price-footnote">Zahlung nach Prüfung · keine Vorkasse</div>
       </div>
       <div class="price-card featured">
         <div class="featured-tag">Beliebteste Wahl</div>
-        <div class="price-name">Starter-Paket</div>
+        <div class="price-name">Starter</div>
         <div class="price-amt">69 €</div>
         <div class="price-note">Festpreis · 2 Dokumente</div>
         <p class="price-desc">Die meisten Unternehmen haben eine Rechnungs- und eine Gutschriftsvorlage. Mit diesem Paket prüfen Sie beide auf einmal — und stellen Ihren Prozess sicher auf.</p>
@@ -219,7 +219,7 @@
           <li>30 Min. Q&amp;A (optional)</li>
           <li>Persönliche Rückmeldung</li>
         </ul>
-        <a href="https://www.linkedin.com/in/dominik-karbe-81a177164" target="_blank" rel="noopener noreferrer" class="price-cta">Paket anfragen via LinkedIn</a>
+        <a href="#einreichen" class="price-cta" data-pkg="Starter">Zum Formular</a>
         <div class="price-footnote">Zahlung nach Prüfung · keine Vorkasse</div>
       </div>
       <div class="price-card">
@@ -236,11 +236,11 @@
           <li>Checkliste für Ihr Team</li>
           <li>Rückmeldung mit Priorität</li>
         </ul>
-        <a href="https://www.linkedin.com/in/dominik-karbe-81a177164" target="_blank" rel="noopener noreferrer" class="price-cta ghost">Anfrage via LinkedIn</a>
+        <a href="#einreichen" class="price-cta ghost" data-pkg="Professional">Zum Formular</a>
         <div class="price-footnote">Zahlung nach Prüfung · keine Vorkasse</div>
       </div>
     </div>
-    <p style="margin-top:1.25rem;font-size:.75rem;color:var(--ink-faint);font-family:var(--font-mono)">Weitere PDFs im Starter-Paket: je 25 € pro Dokument · Rahmenverträge auf Anfrage</p>
+    <p style="margin-top:1.25rem;font-size:.75rem;color:var(--ink-faint);font-family:var(--font-mono)">Weitere PDFs im Starter: je 25 € pro Dokument · Rahmenverträge auf Anfrage</p>
     <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1.25rem;align-items:flex-start">
       <div style="flex:1;min-width:220px;background:var(--surface);border:1px solid var(--border-hard);border-radius:var(--radius);padding:1.25rem 1.5rem">
         <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);margin-bottom:.4rem">WEG A</div>
@@ -327,7 +327,7 @@
     <div class="reveal" style="text-align:center;margin-bottom:2.5rem">
       <div class="label" style="justify-content:center;display:flex">Dokument einreichen</div>
       <h2 class="section-h">PDF jetzt hochladen</h2>
-      <p class="section-sub" style="margin-inline:auto;text-align:center">Laden Sie Ihre Rechnung oder Gutschrift hoch. Ich prüfe das Dokument persönlich und melde mich so schnell wie möglich mit einem konkreten Befundbericht.</p>
+      <p class="section-sub" style="margin-inline:auto;text-align:center">Wählen Sie zuerst Ihr Paket, laden Sie dann Ihre Rechnung oder Gutschrift hoch. Ich prüfe persönlich und melde mich mit einem konkreten Befundbericht.</p>
     </div>
     <div class="form-wrap reveal">
       <div class="f-alert ok" id="alert-success" role="alert" style="display:none">
@@ -336,7 +336,7 @@
       </div>
       <div class="f-alert err" id="alert-error" role="alert" style="display:none">
         <span>!</span>
-        <div><strong>Fehler beim Senden.</strong> Bitte versuchen Sie es erneut oder kontaktieren Sie mich über LinkedIn.</div>
+        <div><strong>Fehler beim Senden.</strong> Bitte versuchen Sie es erneut oder senden Sie Ihre Anfrage später noch einmal.</div>
       </div>
       <form id="uploadForm" novalidate>
         <div class="form-grid">
@@ -360,18 +360,28 @@
           </div>
           <div class="f-card">
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="f-head-title">Dokument</div></div>
+            <div class="field"><label>Paket <span class="req">*</span></label><div class="sel-wrap"><select name="Paket" id="packageSelect" required><option value="">Bitte wählen…</option><option value="Schnellcheck">Schnellcheck — 1 PDF (39 €)</option><option value="Starter">Starter — bis zu 2 PDFs (69 €)</option><option value="Professional">Professional — bis zu 5 PDFs (149 €)</option></select></div><div class="error-msg">Bitte Paket wählen</div><div class="form-help" id="packageHint">Bitte zuerst ein Paket auswählen.</div></div>
             <div class="field"><label>Dokumenttyp <span class="req">*</span></label><div class="sel-wrap"><select name="Dokumenttyp" required><option value="">Bitte wählen…</option><option value="Rechnung">Rechnung</option><option value="Gutschrift">Gutschrift</option></select></div><div class="error-msg">Bitte Dokumenttyp wählen</div></div>
             <div class="field">
               <label>PDF hochladen <span class="req">*</span></label>
               <div class="file-drop" id="fileDrop">
-                <input type="file" name="Dokument-PDF" accept=".pdf" required id="fileInput">
+                <input type="file" name="Dokument-PDF" accept=".pdf" required id="fileInput" multiple>
                 <div class="drop-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
                 <div class="drop-text">PDF ablegen oder klicken</div>
-                <div class="drop-hint">Nur .pdf · max. 10 MB</div>
+                <div class="drop-hint" id="dropHint">Nur .pdf · max. 10 MB · Anzahl je nach Paket</div>
                 <div class="file-name" id="fileName"></div>
               </div>
-              <div class="error-msg" id="fileError">Bitte PDF hochladen</div>
+              <div class="error-msg" id="fileError">Bitte gültige PDF-Datei(en) gemäß Paket hochladen</div>
             </div>
+          </div>
+        </div>
+        <div class="agb-box">
+          <div class="field" style="margin-bottom:0">
+            <div class="agb-check">
+              <input type="checkbox" name="AGB_akzeptiert" id="agbAccepted" required>
+              <label for="agbAccepted">Ich habe die <a href="#agb" target="_self">AGB</a> gelesen und akzeptiere sie. <span class="req">*</span></label>
+            </div>
+            <div class="error-msg">Bitte AGB akzeptieren, um fortzufahren</div>
           </div>
         </div>
         <div class="submit-bar">
@@ -380,6 +390,31 @@
         </div>
       </form>
       <div class="f-footer">Powered by n8n · DSGVO-konform · <a href="#datenschutz">Datenschutzerklärung</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="agb" class="prose-section">
+  <div class="container--sm">
+    <div class="reveal"><div class="label">Rechtliches</div><h2 class="section-h">AGB</h2><p class="section-sub">Allgemeine Geschäftsbedingungen für die E-Rechnungsprüfung.</p></div>
+    <div class="prose reveal">
+      <h3>1. Geltungsbereich</h3>
+      <p>Diese AGB gelten für alle Prüfleistungen von Dominik Karbe im Rahmen der angebotenen PDF-, XRechnung- und ZUGFeRD-Prüfung.</p>
+      <h3>2. Leistungsumfang</h3>
+      <p>Geprüft werden ausschließlich die eingereichten Dokumente im gebuchten Paketumfang. Die Prüfung stellt keine Rechts- oder Steuerberatung dar.</p>
+      <h3>3. Paketgrenzen</h3>
+      <p><strong>Schnellcheck</strong> umfasst 1 PDF, <strong>Starter</strong> bis zu 2 PDFs und <strong>Professional</strong> bis zu 5 PDFs pro Einreichung. Weitere PDFs im Starter-Paket sind gegen Aufpreis (je 25 €) möglich.</p>
+      <h3>4. Mitwirkungspflichten</h3>
+      <p>Die einreichende Person stellt sicher, dass die hochgeladenen Dokumente vollständig, prüffähig und frei von Schadsoftware sind.</p>
+      <h3>5. Vergütung &amp; Zahlung</h3>
+      <p>Es gelten die auf der Website ausgewiesenen Festpreise. Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen. Die Zahlungsmodalitäten werden nach Einreichung individuell vereinbart.</p>
+      <h3>6. Haftung</h3>
+      <p>Die Prüfung erfolgt sorgfältig auf Basis der jeweils aktuellen Normen. Eine Gewähr für rechtliche oder steuerliche Vollständigkeit im Einzelfall wird nicht übernommen.</p>
+      <h3>7. Datenschutz</h3>
+      <p>Die Verarbeitung personenbezogener Daten erfolgt gemäß der <a href="#datenschutz">Datenschutzerklärung</a> und den Bestimmungen der DSGVO.</p>
+      <h3>8. Schlussbestimmungen</h3>
+      <p>Es gilt das Recht der Bundesrepublik Deutschland. Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+      <div class="prose-note">Hinweis: Diese AGB stellen eine inhaltliche Grundfassung dar und ersetzen keine individuelle rechtliche Prüfung.</div>
     </div>
   </div>
 </section>
@@ -432,6 +467,7 @@
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/dominik-karbe-81a177164" target="_blank" rel="noopener">LinkedIn</a>
       <a href="#faq">FAQ</a>
+      <a href="#agb">AGB</a>
       <a href="#impressum">Impressum</a>
       <a href="#datenschutz">Datenschutz</a>
     </div>

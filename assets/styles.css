@@ -14,8 +14,12 @@
   --ink:         #16160e;
   --ink-muted:   #5a5a52;
   --ink-faint:   #a0a098;
-  --accent:      #1a1a14;
-  --accent-2:    #3d3d30;
+  --accent:      #01696f;
+  --accent-2:    #0c4e54;
+  --teal:        #01696f;
+  --teal-hover:  #0c4e54;
+  --teal-light:  #e8f4f4;
+  --teal-muted:  #cedcd8;
 
   --pale-blue:     #eef2ff; --pale-blue-t:    #3730a3;
   --pale-green:    #f0fdf4; --pale-green-t:   #166534;
@@ -38,8 +42,12 @@
   --ink:         #f0f0ea;
   --ink-muted:   #a8a89e;
   --ink-faint:   #5a5a52;
-  --accent:      #f0f0ea;
-  --accent-2:    #d0d0c4;
+  --accent:      #4f98a3;
+  --accent-2:    #227f8b;
+  --teal:        #4f98a3;
+  --teal-hover:  #227f8b;
+  --teal-light:  #1a2f31;
+  --teal-muted:  #2a4044;
 
   --pale-blue:    #1e2040; --pale-blue-t:   #a5b4fc;
   --pale-green:   #0a2018; --pale-green-t:  #86efac;
@@ -68,7 +76,7 @@ body {
   height: 70vw;
   max-width: 800px;
   max-height: 800px;
-  background: radial-gradient(circle, rgba(180,175,150,.13) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--teal) 18%, transparent) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -183,13 +191,13 @@ nav {
   font-size: .8125rem;
   font-weight: 600;
   padding: .45rem 1rem;
-  background: var(--ink);
-  color: var(--canvas) !important;
+  background: var(--teal);
+  color: #fff !important;
   border-radius: 6px;
   text-decoration: none;
   transition: opacity .15s;
 }
-.nav-cta:hover { opacity: .85; }
+.nav-cta:hover { background: var(--teal-hover); opacity: 1; }
 
 .theme-btn {
   width: 32px; height: 32px;
@@ -206,7 +214,7 @@ nav {
 @media (max-width: 640px) { .hide-sm { display: none; } }
 
 /* ── Hero ───────────────────────────────────────────── */
-.hero { padding-block: 6rem 5rem; }
+.hero { padding-block: 6rem 5rem; background: linear-gradient(180deg, color-mix(in srgb, var(--teal) 7%, var(--canvas)) 0%, var(--canvas) 72%); }
 
 .hero-inner {
   display: grid;
@@ -261,22 +269,23 @@ nav {
   font-family: var(--font-sans);
 }
 .btn-solid {
-  background: var(--ink);
-  color: var(--canvas);
-  border-color: var(--ink);
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--teal) 22%, transparent);
 }
-.btn-solid:hover { opacity: .85; }
+.btn-solid:hover { background: var(--teal-hover); border-color: var(--teal-hover); opacity: 1; }
 .btn-ghost {
   background: transparent;
   color: var(--ink-muted);
   border-color: var(--border-hard);
 }
-.btn-ghost:hover { background: var(--surface); color: var(--ink); }
+.btn-ghost:hover { background: var(--teal-light); color: var(--teal); border-color: color-mix(in srgb, var(--teal) 30%, var(--border-hard)); }
 
 /* ── Hero Panel ─────────────────────────────────────── */
 .hero-panel {
-  background: var(--surface);
-  border: 1px solid var(--border-hard);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--teal) 4%, var(--surface)) 0%, var(--surface) 100%);
+  border: 1px solid color-mix(in srgb, var(--teal) 18%, var(--border-hard));
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   box-shadow: var(--shadow);
@@ -332,10 +341,10 @@ nav {
 
 /* ── Trust strip ────────────────────────────────────── */
 .trust-strip {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid color-mix(in srgb, var(--teal) 22%, var(--border));
+  border-bottom: 1px solid color-mix(in srgb, var(--teal) 22%, var(--border));
   padding-block: 1rem;
-  background: var(--surface);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--teal) 6%, var(--surface)) 0%, var(--surface) 100%);
 }
 
 .trust-inner {
@@ -452,9 +461,9 @@ nav {
 .price-card:hover { box-shadow: var(--shadow); }
 
 .price-card.featured {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--canvas);
+  background: linear-gradient(160deg, var(--teal) 0%, var(--teal-hover) 100%);
+  border-color: var(--teal);
+  color: #fff;
 }
 .price-card.featured p,
 .price-card.featured .price-note,
@@ -508,18 +517,18 @@ nav {
   font-weight: 600;
   text-decoration: none;
   transition: all .15s;
-  background: var(--ink);
-  color: var(--canvas);
-  border: 1px solid var(--ink);
+  background: var(--teal);
+  color: #fff;
+  border: 1px solid var(--teal);
   margin-bottom: .75rem;
 }
-.price-cta:hover { opacity: .85; }
+.price-cta:hover { background: var(--teal-hover); border-color: var(--teal-hover); opacity: 1; }
 .price-cta.ghost {
   background: transparent;
   color: var(--ink-muted);
   border-color: var(--border-hard);
 }
-.price-cta.ghost:hover { background: var(--surface-2); color: var(--ink); }
+.price-cta.ghost:hover { background: var(--teal-light); color: var(--teal); border-color: color-mix(in srgb, var(--teal) 30%, var(--border-hard)); }
 .price-card.featured .price-cta {
   background: var(--canvas);
   color: var(--ink);
@@ -714,7 +723,7 @@ input:hover, select:hover { border-color: var(--ink-faint); }
 input:focus, select:focus {
   border-color: var(--ink);
   background: var(--canvas);
-  box-shadow: 0 0 0 3px rgba(22,22,14,.08);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 18%, transparent);
 }
 
 .field.has-error input,
@@ -775,7 +784,7 @@ input:focus, select:focus {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  background: var(--ink);
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-hover) 100%);
   border-radius: var(--radius);
   padding: 1.25rem 1.5rem;
   margin-top: .25rem;
@@ -884,3 +893,78 @@ footer {
 .footer-links { display: flex; gap: 1.25rem; }
 .footer-links a { font-size: .8rem; color: var(--ink-faint); text-decoration: none; transition: color .15s; }
 .footer-links a:hover { color: var(--ink); }
+
+
+/* ── Extra Teal utilities ─────────────────────────────────── */
+.hero-kicker svg, .trust-item svg, .f-head-icon svg { color: var(--teal); }
+.trust-item { color: var(--ink-muted); }
+.trust-item svg { flex-shrink: 0; }
+
+.price-card { border-color: color-mix(in srgb, var(--teal) 10%, var(--border-hard)); }
+.price-card:hover { box-shadow: 0 14px 36px color-mix(in srgb, var(--teal) 12%, transparent); }
+.price-card.featured .price-note,
+.price-card.featured .price-footnote,
+.price-card.featured .price-list li { color: rgba(255,255,255,.78); }
+.price-card.featured .price-cta { background: #fff; color: var(--teal-hover); border-color: #fff; }
+.price-card.featured .price-cta:hover { opacity: .92; }
+
+/* Package shortcuts row */
+.package-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.package-shortcut {
+  background: color-mix(in srgb, var(--teal) 5%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--teal) 18%, var(--border-hard));
+  border-radius: var(--radius);
+  padding: 1.1rem;
+}
+.package-shortcut strong { color: var(--ink); display:block; margin-bottom:.35rem; }
+.package-shortcut p { font-size:.8125rem; margin-bottom:.85rem; }
+
+/* AGB checkbox block */
+.agb-box {
+  margin-top: 1rem;
+  padding: .95rem 1rem;
+  border: 1px solid var(--border-hard);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--teal) 4%, var(--canvas));
+}
+.agb-check { display:flex; gap:.75rem; align-items:flex-start; }
+.agb-check input[type="checkbox"] {
+  width: 18px; height: 18px;
+  margin-top: .15rem;
+  accent-color: var(--teal);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.agb-check label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--ink-muted);
+}
+.agb-check a { color: var(--teal); text-underline-offset: 2px; }
+.agb-box .error-msg { margin-top:.35rem; }
+
+.form-help {
+  font-size: .72rem;
+  color: var(--ink-faint);
+  margin-top: .4rem;
+  font-family: var(--font-mono);
+}
+
+/* AGB prose section note */
+.prose-note {
+  border-left-color: var(--teal);
+  background: color-mix(in srgb, var(--teal) 6%, var(--surface));
+}
+
+@media (max-width: 860px) { .package-shortcuts { grid-template-columns: 1fr; } }
