@@ -24,7 +24,7 @@
 })();
 
 /* ── Webhook ─────────────────────────────────────────────── */
-const WEBHOOK_URL = 'https://helped-evident-cobra.ngrok-free.app/webhook-test/a1b2c3d4-e5f6-7890-abcd-ef1234567890';
+const WEBHOOK_URL = 'https://n8n.srv1622881.hstgr.cloud/webhook-test/a1b2c3d4-e5f6-7890-abcd-ef1234567890';
 
 let _zaehler = 0;
 function genVorgangsId(){
