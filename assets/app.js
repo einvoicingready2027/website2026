@@ -68,9 +68,19 @@ function refreshFileLabel(files){
     fileNameEl.style.display='none'; fileNameEl.textContent='';
     fileDrop.classList.remove('has-file'); return;
   }
+  
+  const pkg = pkgSelect?.value;
+  const lim = LIMITS[pkg] || 0;
+  const isValidCount = pkg && files.length <= lim;
+
   fileNameEl.textContent = '✓ ' + files.length + ' Datei' + (files.length>1?'en':'') + ': ' + Array.from(files).map(f=>f.name).join(', ');
   fileNameEl.style.display='block';
-  fileDrop.classList.add('has-file');
+  
+  if (isValidCount) {
+    fileDrop.classList.add('has-file');
+  } else {
+    fileDrop.classList.remove('has-file');
+  }
 }
 
 /* Validate file field */
@@ -107,6 +117,7 @@ if(form){
 
   pkgSelect?.addEventListener('change', ()=>{
     refreshPkgUi();
+    refreshFileLabel(fileInput.files);
     if(fileInput.files.length) validateFiles();
   });
 
