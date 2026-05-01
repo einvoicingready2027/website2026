@@ -56,9 +56,18 @@ function refreshPkgUi(){
   if(lim){
     if(pkgHint)  pkgHint.textContent  = pkg + ': bis zu ' + lim + ' PDF' + (lim>1?'s':'') + ' pro Einreichung.';
     if(dropHint) dropHint.textContent = 'Nur .pdf · max. 10 MB je Datei · ' + lim + ' PDF' + (lim>1?'s':'') + ' im Paket';
+    if(fileInput) {
+      fileInput.disabled = false;
+      fileInput.multiple = (lim > 1);
+    }
+    if(fileDrop) fileDrop.style.opacity = '1';
+    if(fileDrop) fileDrop.style.cursor = 'pointer';
   } else {
     if(pkgHint)  pkgHint.textContent  = 'Bitte zuerst ein Paket auswählen.';
     if(dropHint) dropHint.textContent = 'Nur .pdf · max. 10 MB · Anzahl je nach Paket';
+    if(fileInput) fileInput.disabled = true;
+    if(fileDrop) fileDrop.style.opacity = '0.5';
+    if(fileDrop) fileDrop.style.cursor = 'not-allowed';
   }
 }
 
@@ -117,11 +126,26 @@ if(form){
 
   pkgSelect?.addEventListener('change', ()=>{
     refreshPkgUi();
+    const pkg = pkgSelect.value;
+    const lim = LIMITS[pkg] || 0;
+    if (fileInput.files.length > lim && lim > 0) {
+      const dt = new DataTransfer();
+      for (let i = 0; i < lim; i++) dt.items.add(fileInput.files[i]);
+      fileInput.files = dt.files;
+    }
     refreshFileLabel(fileInput.files);
     if(fileInput.files.length) validateFiles();
   });
 
   fileInput.addEventListener('change', ()=>{
+    const pkg = pkgSelect?.value;
+    const lim = LIMITS[pkg] || 0;
+    if (fileInput.files.length > lim && lim > 0) {
+      // Force truncation if the browser/user bypassed 'multiple' or used drag-drop
+      const dt = new DataTransfer();
+      for (let i = 0; i < lim; i++) dt.items.add(fileInput.files[i]);
+      fileInput.files = dt.files;
+    }
     refreshFileLabel(fileInput.files);
     if(pkgSelect.value) validateFiles();
   });
@@ -129,9 +153,16 @@ if(form){
   ['dragover','dragleave','drop'].forEach(ev=>{
     fileDrop.addEventListener(ev, e=>{
       e.preventDefault();
+      if(pkgSelect && !pkgSelect.value) return; 
       fileDrop.classList.toggle('dragover', ev==='dragover');
       if(ev==='drop' && e.dataTransfer.files.length){
-        fileInput.files = e.dataTransfer.files;  // not all browsers allow this
+        const pkg = pkgSelect.value;
+        const lim = LIMITS[pkg] || 0;
+        const dt = new DataTransfer();
+        const count = Math.min(e.dataTransfer.files.length, lim);
+        for (let i = 0; i < count; i++) dt.items.add(e.dataTransfer.files[i]);
+        
+        fileInput.files = dt.files;
         refreshFileLabel(fileInput.files);
         if(pkgSelect.value) validateFiles();
       }
