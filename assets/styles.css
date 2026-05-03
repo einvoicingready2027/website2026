@@ -344,7 +344,7 @@ nav {
   align-items: center;
 }
 .panel-label::after {
-  content: "DOKUMENT_PRÜFUNG · ID: 2026-DK";
+  content: "PRÜFBERICHT · REF-2026-001-X";
   color: var(--brand-warm);
   font-weight: 600;
 }
