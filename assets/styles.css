@@ -32,6 +32,8 @@
   --shadow:    0 12px 30px rgba(0,0,0,.03), 0 4px 8px rgba(0,0,0,.01);
   --shadow-lg: 0 30px 60px rgba(0,0,0,.08), 0 10px 20px rgba(0,0,0,.02);
   
+  --brand-warm:  #c0895a; /* Warm bronze/gold for brand personality */
+  --brand-light: #fdfaf6;
   --ease-premium: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
@@ -241,7 +243,9 @@ nav {
 /* ── Hero ───────────────────────────────────────────── */
 .hero {
   padding-block: 8rem 6rem;
-  background: radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--teal) 5%, transparent) 0%, var(--canvas) 100%);
+  background: 
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--brand-warm) 8%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, color-mix(in srgb, var(--teal) 5%, transparent) 0%, var(--canvas) 100%);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
@@ -261,10 +265,10 @@ nav {
   font-size: .68rem;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--brand-warm);
   margin-bottom: 1.5rem;
-  background: var(--surface-2);
-  border: 1px solid var(--border-hard);
+  background: color-mix(in srgb, var(--brand-warm) 5%, var(--canvas));
+  border: 1px solid color-mix(in srgb, var(--brand-warm) 20%, var(--border-hard));
   padding: .45rem 1rem;
   border-radius: 999px;
   font-weight: 600;
@@ -340,13 +344,10 @@ nav {
   align-items: center;
 }
 .panel-label::after {
-  content: "LIVE_VALIDATION";
-  color: #22c55e;
-  font-weight: 700;
-  animation: pulse 2s infinite;
+  content: "DOKUMENT_PRÜFUNG · ID: 2026-DK";
+  color: var(--brand-warm);
+  font-weight: 600;
 }
-
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
 
 .check-rows { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
 .check-row { display: flex; align-items: flex-start; gap: 1rem; }
