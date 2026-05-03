@@ -23,6 +23,20 @@
   document.querySelectorAll('.reveal, .stagger').forEach(el=>io.observe(el));
 })();
 
+/* ── Spotlight Effect for Bento Cards ────────────────────── */
+(function(){
+  const bentoCards = document.querySelectorAll('.bento-card');
+  bentoCards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+})();
+
 /* ── Webhook ─────────────────────────────────────────────── */
 const WEBHOOK_URL = 'https://n8n.srv1622881.hstgr.cloud/webhook-test/a1b2c3d4-e5f6-7890-abcd-ef1234567890';
 
