@@ -52,7 +52,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Geist:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -94,18 +94,20 @@
         <a href="#preise" class="btn btn-ghost">Pakete und Preise</a>
       </div>
     </div>
-    <div class="hero-panel reveal">
-      <div class="panel-label">Auszug · Prüfprotokoll</div>
-      <ul class="check-rows">
-        <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Dokumentstruktur validiert</div><div class="check-sub">Relevante Prüfregeln wurden erfolgreich angewendet</div></div></li>
-        <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">EN 16931 Pflichtangaben</div><div class="check-sub">Anforderungen gemäß konkretem Geschäftsvorfall geprüft</div></div></li>
-        <li class="check-row"><span class="check-dot warn">!</span><div><div class="check-name">ZUGFeRD-Version</div><div class="check-sub">Version 2.0 erkannt - mindestens 2.2 erforderlich</div></div></li>
-        <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Steuerkennzeichen</div><div class="check-sub">USt-ID und Steuernummer vollständig</div></div></li>
-        <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Leitweg-ID (XRechnung)</div><div class="check-sub">Gültig und korrekt formatiert</div></div></li>
-      </ul>
-      <div class="panel-stats">
-        <div><div class="stat-num">10</div><div class="stat-lbl">Jahre Erfahrung</div></div>
-        <div><div class="stat-num">EN 16931</div><div class="stat-lbl">Normkonform</div></div>
+    <div class="hero-panel-wrap reveal">
+      <div class="hero-panel">
+        <div class="panel-label">Auszug · Prüfprotokoll</div>
+        <ul class="check-rows">
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Dokumentstruktur validiert</div><div class="check-sub">Relevante Prüfregeln wurden erfolgreich angewendet</div></div></li>
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">EN 16931 Pflichtangaben</div><div class="check-sub">Anforderungen gemäß konkretem Geschäftsvorfall geprüft</div></div></li>
+          <li class="check-row"><span class="check-dot warn">!</span><div><div class="check-name">ZUGFeRD-Version</div><div class="check-sub">Version 2.0 erkannt - mindestens 2.2 erforderlich</div></div></li>
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Steuerkennzeichen</div><div class="check-sub">USt-ID und Steuernummer vollständig</div></div></li>
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Leitweg-ID (XRechnung)</div><div class="check-sub">Gültig und korrekt formatiert</div></div></li>
+        </ul>
+        <div class="panel-stats">
+          <div><div class="stat-num">10</div><div class="stat-lbl">Jahre Erfahrung</div></div>
+          <div><div class="stat-num">EN 16931</div><div class="stat-lbl">Normkonform</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -320,13 +322,13 @@
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="f-head-title">Persönliche Daten</div></div>
             <div class="field"><label>Vorname <span class="req">*</span></label><input type="text" name="Vorname" placeholder="Ihr Vorname" required><div class="error-msg">Pflichtfeld</div></div>
             <div class="field"><label>Nachname <span class="req">*</span></label><input type="text" name="Nachname" placeholder="Ihr Nachname" required><div class="error-msg">Pflichtfeld</div></div>
-            <div class="field"><label>E-Mail-Adresse</label><input type="email" name="Ihre Email" placeholder="ihre@email.de"><div class="error-msg">Bitte gültige E-Mail eingeben</div></div>
+            <div class="field"><label>E-Mail-Adresse <span class="req">*</span></label><input type="email" name="Ihre Email" placeholder="ihre@email.de" required><div class="error-msg">Bitte gültige E-Mail eingeben</div></div>
           </div>
           <div class="f-card">
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="f-head-title">Adresse</div></div>
-            <div class="field"><label>Straße &amp; Hausnummer</label><input type="text" name="Strasse" placeholder="Musterstraße 12"></div>
-            <div class="row-2"><div class="field"><label>PLZ</label><input type="number" name="PLZ" placeholder="68163"></div><div class="field"><label>Ort</label><input type="text" name="Ort" placeholder="Mannheim"></div></div>
-            <div class="field"><label>Land</label><input type="text" name="Land" placeholder="Deutschland"></div>
+            <div class="field"><label>Straße &amp; Hausnummer <span class="req">*</span></label><input type="text" name="Strasse" placeholder="Musterstraße 12" required><div class="error-msg">Pflichtfeld</div></div>
+            <div class="row-2"><div class="field"><label>PLZ <span class="req">*</span></label><input type="number" name="PLZ" placeholder="68163" required><div class="error-msg">Pflichtfeld</div></div><div class="field"><label>Ort <span class="req">*</span></label><input type="text" name="Ort" placeholder="Mannheim" required><div class="error-msg">Pflichtfeld</div></div></div>
+            <div class="field"><label>Land <span class="req">*</span></label><input type="text" name="Land" placeholder="Deutschland" required><div class="error-msg">Pflichtfeld</div></div>
           </div>
           <div class="f-card">
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="f-head-title">Firmendaten</div></div>
