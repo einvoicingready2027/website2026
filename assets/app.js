@@ -38,7 +38,7 @@
 })();
 
 /* ── Webhook ─────────────────────────────────────────────── */
-const WEBHOOK_URL = 'https://n8n.srv1622881.hstgr.cloud/webhook/document-intake';
+const WEBHOOK_URL = 'https://n8n.srv1622881.hstgr.cloud/webhook-test/document-intake';
 
 let _zaehler = 0;
 function genVorgangsId(){
