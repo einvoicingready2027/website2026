@@ -54,19 +54,34 @@ const form        = document.getElementById('uploadForm');
 const submitBtn   = document.getElementById('submitBtn');
 const fileInput   = document.getElementById('fileInput');
 const fileDrop    = document.getElementById('fileDrop');
-const fileNameEl  = document.getElementById('fileName');
+const fileListContainer = document.getElementById('fileListContainer');
 const alertOk     = document.getElementById('alert-success');
 const alertErr    = document.getElementById('alert-error');
 const pkgSelect   = document.getElementById('packageSelect');
+const dokuTypSelect = document.getElementById('dokutyp');
 const pkgHint     = document.getElementById('packageHint');
 const dropHint    = document.getElementById('dropHint');
 const fileErrEl   = document.getElementById('fileError');
+const fileLimitNotice = document.getElementById('fileLimitNotice');
+
+let allFiles = []; // Persistent storage for additive uploads: Array of { file: File, type: string }
+
+function showLimitNotice(msg) {
+  if (!fileLimitNotice) return;
+  fileLimitNotice.textContent = msg;
+  fileLimitNotice.style.display = 'block';
+}
+
+function hideLimitNotice() {
+  if (fileLimitNotice) fileLimitNotice.style.display = 'none';
+}
 
 /* Update hint text when package changes */
 function refreshPkgUi(){
   if(!pkgSelect) return;
   const pkg = pkgSelect.value;
   const lim = LIMITS[pkg];
+  hideLimitNotice();
   if(lim){
     if(pkgHint)  pkgHint.textContent  = pkg + ': bis zu ' + lim + ' PDF' + (lim>1?'s':'') + ' pro Einreichung.';
     if(dropHint) dropHint.textContent = 'Nur .pdf · max. 10 MB je Datei · ' + lim + ' PDF' + (lim>1?'s':'') + ' im Paket';
@@ -76,34 +91,91 @@ function refreshPkgUi(){
     }
     if(fileDrop) fileDrop.style.opacity = '1';
     if(fileDrop) fileDrop.style.cursor = 'pointer';
+    
+    if (allFiles.length > lim) {
+      allFiles = allFiles.slice(0, lim);
+      syncInputFiles();
+      refreshFileLabel();
+    }
   } else {
     if(pkgHint)  pkgHint.textContent  = 'Bitte zuerst ein Paket auswählen.';
     if(dropHint) dropHint.textContent = 'Nur .pdf · max. 10 MB · Anzahl je nach Paket';
     if(fileInput) fileInput.disabled = true;
     if(fileDrop) fileDrop.style.opacity = '0.5';
     if(fileDrop) fileDrop.style.cursor = 'not-allowed';
+    allFiles = [];
+    syncInputFiles();
+    refreshFileLabel();
   }
 }
 
-/* Update file label */
-function refreshFileLabel(files){
-  if(!files || files.length===0){
-    fileNameEl.style.display='none'; fileNameEl.textContent='';
-    fileDrop.classList.remove('has-file'); return;
+/* Sync the hidden file input with the allFiles array */
+function syncInputFiles() {
+  const dt = new DataTransfer();
+  allFiles.forEach(item => dt.items.add(item.file));
+  fileInput.files = dt.files;
+}
+
+/* Remove a specific file */
+function removeFile(idx) {
+  allFiles.splice(idx, 1);
+  syncInputFiles();
+  refreshFileLabel();
+  validateFiles();
+  hideLimitNotice();
+}
+
+/* Update an individual file's type */
+function updateFileType(idx, type) {
+  if (allFiles[idx]) {
+    allFiles[idx].type = type;
+  }
+}
+
+/* Update file list with type selectors and remove buttons */
+function refreshFileLabel(){
+  if(!fileListContainer) return;
+  fileListContainer.innerHTML = '';
+  
+  if(allFiles.length===0){
+    fileDrop.classList.remove('has-file');
+    return;
   }
   
   const pkg = pkgSelect?.value;
   const lim = LIMITS[pkg] || 0;
-  const isValidCount = pkg && files.length <= lim;
+  const isValidCount = pkg && allFiles.length <= lim;
 
-  fileNameEl.textContent = '✓ ' + files.length + ' Datei' + (files.length>1?'en':'') + ': ' + Array.from(files).map(f=>f.name).join(', ');
-  fileNameEl.style.display='block';
-  
   if (isValidCount) {
     fileDrop.classList.add('has-file');
   } else {
     fileDrop.classList.remove('has-file');
   }
+
+  allFiles.forEach((item, idx) => {
+    const file = item.file;
+    const type = item.type;
+    const div = document.createElement('div');
+    div.className = 'file-item';
+    div.innerHTML = `
+      <div class="file-item-info">
+        <span class="file-item-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </span>
+        <span class="file-item-name" title="${file.name}">${file.name}</span>
+      </div>
+      <div class="file-item-actions">
+        <select class="file-type-select" onchange="updateFileType(${idx}, this.value)">
+          <option value="Rechnung" ${type === 'Rechnung' ? 'selected' : ''}>Rechnung</option>
+          <option value="Gutschrift" ${type === 'Gutschrift' ? 'selected' : ''}>Gutschrift</option>
+        </select>
+        <button type="button" class="file-remove-btn" onclick="removeFile(${idx})" aria-label="Datei entfernen">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    `;
+    fileListContainer.appendChild(div);
+  });
 }
 
 /* Validate file field */
@@ -111,12 +183,12 @@ function validateFiles(){
   const field = fileInput.closest('.field');
   const pkg   = pkgSelect?.value;
   const lim   = LIMITS[pkg]||0;
-  const files = fileInput.files;
+  const files = allFiles;
   let valid=true, msg='Bitte gültige PDF-Datei(en) gemäß Paket hochladen';
   if(!pkg)                        { valid=false; msg='Bitte zuerst ein Paket auswählen'; }
   else if(!files||files.length===0){ valid=false; msg='Bitte mindestens eine PDF hochladen'; }
   else if(files.length>lim)       { valid=false; msg='Für '+pkg+' sind maximal '+lim+' PDF'+(lim>1?'s':'')+' erlaubt'; }
-  else if(Array.from(files).some(f=>!f.name.toLowerCase().endsWith('.pdf'))){ valid=false; msg='Nur PDF-Dateien erlaubt'; }
+  else if(files.some(item=>!item.file.name.toLowerCase().endsWith('.pdf'))){ valid=false; msg='Nur PDF-Dateien erlaubt'; }
   field.classList.toggle('has-error',!valid);
   if(fileErrEl) fileErrEl.textContent=msg;
   return valid;
@@ -140,28 +212,42 @@ if(form){
 
   pkgSelect?.addEventListener('change', ()=>{
     refreshPkgUi();
-    const pkg = pkgSelect.value;
-    const lim = LIMITS[pkg] || 0;
-    if (fileInput.files.length > lim && lim > 0) {
-      const dt = new DataTransfer();
-      for (let i = 0; i < lim; i++) dt.items.add(fileInput.files[i]);
-      fileInput.files = dt.files;
-    }
-    refreshFileLabel(fileInput.files);
-    if(fileInput.files.length) validateFiles();
+    if(allFiles.length) validateFiles();
   });
 
-  fileInput.addEventListener('change', ()=>{
+  fileInput.addEventListener('change', (e)=>{
     const pkg = pkgSelect?.value;
     const lim = LIMITS[pkg] || 0;
-    if (fileInput.files.length > lim && lim > 0) {
-      // Force truncation if the browser/user bypassed 'multiple' or used drag-drop
-      const dt = new DataTransfer();
-      for (let i = 0; i < lim; i++) dt.items.add(fileInput.files[i]);
-      fileInput.files = dt.files;
+    const stdType = dokuTypSelect?.value || 'Rechnung';
+    
+    hideLimitNotice();
+
+    if (allFiles.length >= lim && lim > 0) {
+      showLimitNotice(`Maximale Anzahl erreicht: Sie haben bereits die ${lim} erlaubten Dokumente für das Paket "${pkg}" ausgewählt. Bitte entfernen Sie zuerst ein Dokument, um ein neues hinzuzufügen.`);
+      fileInput.value = '';
+      return;
     }
-    refreshFileLabel(fileInput.files);
+
+    const newFiles = Array.from(e.target.files);
+    let exceeded = false;
+    newFiles.forEach(f => {
+      if (allFiles.length < lim) {
+        if (f.name.toLowerCase().endsWith('.pdf')) {
+          allFiles.push({ file: f, type: stdType });
+        }
+      } else {
+        exceeded = true;
+      }
+    });
+
+    if (exceeded) {
+      showLimitNotice(`Einige Dateien wurden nicht hinzugefügt, da das Limit von ${lim} Dokumenten für das Paket "${pkg}" erreicht wurde.`);
+    }
+
+    syncInputFiles();
+    refreshFileLabel();
     if(pkgSelect.value) validateFiles();
+    fileInput.value = '';
   });
 
   ['dragover','dragleave','drop'].forEach(ev=>{
@@ -169,15 +255,36 @@ if(form){
       e.preventDefault();
       if(pkgSelect && !pkgSelect.value) return; 
       fileDrop.classList.toggle('dragover', ev==='dragover');
-      if(ev==='drop' && e.dataTransfer.files.length){
+      if(ev=== 'drop' && e.dataTransfer.files.length){
         const pkg = pkgSelect.value;
         const lim = LIMITS[pkg] || 0;
-        const dt = new DataTransfer();
-        const count = Math.min(e.dataTransfer.files.length, lim);
-        for (let i = 0; i < count; i++) dt.items.add(e.dataTransfer.files[i]);
+        const stdType = dokuTypSelect?.value || 'Rechnung';
         
-        fileInput.files = dt.files;
-        refreshFileLabel(fileInput.files);
+        hideLimitNotice();
+
+        if (allFiles.length >= lim && lim > 0) {
+          showLimitNotice(`Maximale Anzahl erreicht: Sie haben bereits die ${lim} erlaubten Dokumente für das Paket "${pkg}" ausgewählt. Bitte entfernen Sie zuerst ein Dokument, um ein neues hinzuzufügen.`);
+          return;
+        }
+
+        const droppedFiles = Array.from(e.dataTransfer.files);
+        let exceeded = false;
+        droppedFiles.forEach(f => {
+          if (allFiles.length < lim) {
+            if (f.name.toLowerCase().endsWith('.pdf')) {
+              allFiles.push({ file: f, type: stdType });
+            }
+          } else {
+            exceeded = true;
+          }
+        });
+        
+        if (exceeded) {
+          showLimitNotice(`Einige Dateien wurden nicht hinzugefügt, da das Limit von ${lim} Dokumenten für das Paket "${pkg}" erreicht wurde.`);
+        }
+
+        syncInputFiles();
+        refreshFileLabel();
         if(pkgSelect.value) validateFiles();
       }
     });
@@ -220,23 +327,28 @@ if(form){
     data['Eingereicht_am'] = new Date().toLocaleString('sv-SE',{timeZone:'Europe/Berlin',hour12:false}).replace(' ','T');
     data['Vorgangs_ID']    = genVorgangsId();
 
-    const files = Array.from(fileInput.files||[]);
-    const encoded = await Promise.all(files.map(file=>new Promise(res=>{
+    const files = allFiles;
+    const encoded = await Promise.all(files.map(item=>new Promise(res=>{
       const r=new FileReader();
-      r.onload=()=>res({name:file.name,base64:r.result.split(',')[1]});
-      r.readAsDataURL(file);
+      r.onload=()=>res({name:item.file.name, type: item.type, base64:r.result.split(',')[1]});
+      r.readAsDataURL(item.file);
     })));
     data['Dokument-PDF-Anzahl']  = files.length;
-    data['Dokument-PDF-Namen']   = encoded.map(f=>f.name).join(', ');
+    data['Dokument-PDF-Details'] = encoded.map(f=>`${f.name} (${f.type})`).join(', ');
     data['Dokument-PDF-Dateien'] = encoded;
-    if(encoded[0]){ data['Dokument-PDF-Name']=encoded[0].name; data['Dokument-PDF-Base64']=encoded[0].base64; }
+    if(encoded[0]){ 
+      data['Dokument-PDF-Name']=encoded[0].name; 
+      data['Dokument-PDF-Type']=encoded[0].type; 
+      data['Dokument-PDF-Base64']=encoded[0].base64; 
+    }
 
     try {
       const res = await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
       if(res.ok){
         showAlert('ok');
         form.reset();
-        refreshFileLabel([]);
+        allFiles = [];
+        refreshFileLabel();
         refreshPkgUi();
         form.querySelectorAll('.field').forEach(f=>f.classList.remove('has-error'));
       } else { showAlert('err'); }

@@ -42,7 +42,7 @@
   <nav>
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="eRechnungswerk Home">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect width="26" height="26" rx="6" fill="var(--brand-warm)"/><path d="M7 18V8h5c2.3 0 3.7 1.1 3.7 3 0 2-1.5 3.1-3.7 3.1H9.2V18H7zm2.2-4.9H12c1.2 0 1.9-.55 1.9-1.4s-.7-1.3-1.9-1.3H9.2v2.7z" fill="var(--canvas)"/><path d="M17.5 8h2v10h-2z" fill="var(--canvas)" opacity=".45"/></svg>
+        <img src="assets/logo2.png" alt="" class="nav-logo-img">
         eRechnungswerk
       </a>
       <div class="nav-links">
@@ -301,36 +301,116 @@
         <div class="form-grid">
           <div class="f-card">
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="f-head-title">Persönliche Daten</div></div>
-            <div class="field"><label for="vorname">Vorname <span class="req">*</span></label><input type="text" id="vorname" name="Vorname" placeholder="Ihr Vorname" required><div class="error-msg">Pflichtfeld</div></div>
-            <div class="field"><label for="nachname">Nachname <span class="req">*</span></label><input type="text" id="nachname" name="Nachname" placeholder="Ihr Nachname" required><div class="error-msg">Pflichtfeld</div></div>
-            <div class="field"><label for="email">E-Mail-Adresse <span class="req">*</span></label><input type="email" id="email" name="Ihre Email" placeholder="ihre@email.de" required><div class="error-msg">Bitte gültige E-Mail eingeben</div></div>
+            <div class="field">
+              <div class="field-header">
+                <label for="vorname">Vorname <span class="req">*</span></label>
+                <div class="error-msg">Pflichtfeld</div>
+              </div>
+              <input type="text" id="vorname" name="Vorname" placeholder="Ihr Vorname" required>
+            </div>
+            <div class="field">
+              <div class="field-header">
+                <label for="nachname">Nachname <span class="req">*</span></label>
+                <div class="error-msg">Pflichtfeld</div>
+              </div>
+              <input type="text" id="nachname" name="Nachname" placeholder="Ihr Nachname" required>
+            </div>
+            <div class="field">
+              <div class="field-header">
+                <label for="email">E-Mail-Adresse <span class="req">*</span></label>
+                <div class="error-msg">Bitte gültige E-Mail eingeben</div>
+              </div>
+              <input type="email" id="email" name="Ihre Email" placeholder="ihre@email.de" required>
+            </div>
           </div>
           <div class="f-card">
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="f-head-title">Adresse</div></div>
-            <div class="field"><label for="strasse">Straße &amp; Hausnummer <span class="req">*</span></label><input type="text" id="strasse" name="Strasse" placeholder="Musterstraße 12" required><div class="error-msg">Pflichtfeld</div></div>
-            <div class="row-2"><div class="field"><label for="plz">PLZ <span class="req">*</span></label><input type="number" id="plz" name="PLZ" placeholder="68163" required><div class="error-msg">Pflichtfeld</div></div><div class="field"><label for="ort">Ort <span class="req">*</span></label><input type="text" id="ort" name="Ort" placeholder="Mannheim" required><div class="error-msg">Pflichtfeld</div></div></div>
-            <div class="field"><label for="land">Land <span class="req">*</span></label><input type="text" id="land" name="Land" placeholder="Deutschland" required><div class="error-msg">Pflichtfeld</div></div>
+            <div class="field">
+              <div class="field-header">
+                <label for="strasse">Straße &amp; Hausnummer <span class="req">*</span></label>
+                <div class="error-msg">Pflichtfeld</div>
+              </div>
+              <input type="text" id="strasse" name="Strasse" placeholder="Musterstraße 12" required>
+            </div>
+            <div class="row-2">
+              <div class="field">
+                <div class="field-header">
+                  <label for="plz">PLZ <span class="req">*</span></label>
+                  <div class="error-msg">Pflichtfeld</div>
+                </div>
+                <input type="number" id="plz" name="PLZ" placeholder="68163" required>
+              </div>
+              <div class="field">
+                <div class="field-header">
+                  <label for="ort">Ort <span class="req">*</span></label>
+                  <div class="error-msg">Pflichtfeld</div>
+                </div>
+                <input type="text" id="ort" name="Ort" placeholder="Mannheim" required>
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-header">
+                <label for="land">Land <span class="req">*</span></label>
+                <div class="error-msg">Pflichtfeld</div>
+              </div>
+              <input type="text" id="land" name="Land" placeholder="Deutschland" required>
+            </div>
           </div>
           <div class="f-card">
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="f-head-title">Firmendaten</div></div>
-            <div class="field"><label for="firma">Firmenbezeichnung</label><input type="text" id="firma" name="Firmenbezeichnung" placeholder="Name Ihrer Firma"></div>
-            <div class="field"><label for="branche">Branche</label><input type="text" id="branche" name="Branche" placeholder="z. B. IT, Handel, Dienstleistung"></div>
-            <div class="field"><label for="volumen">Rechnungsvolumen / Jahr (ca.)</label><input type="number" id="volumen" name="Volumen" placeholder="z. B. 50000"></div>
+            <div class="field">
+              <div class="field-header">
+                <label for="firma">Firmenbezeichnung</label>
+                <div class="error-msg"></div>
+              </div>
+              <input type="text" id="firma" name="Firmenbezeichnung" placeholder="Name Ihrer Firma">
+            </div>
+            <div class="field">
+              <div class="field-header">
+                <label for="branche">Branche</label>
+                <div class="error-msg"></div>
+              </div>
+              <input type="text" id="branche" name="Branche" placeholder="z. B. IT, Handel, Dienstleistung">
+            </div>
+            <div class="field">
+              <div class="field-header">
+                <label for="volumen">Rechnungsvolumen / Jahr (ca.)</label>
+                <div class="error-msg"></div>
+              </div>
+              <input type="number" id="volumen" name="Volumen" placeholder="z. B. 50000">
+            </div>
           </div>
           <div class="f-card">
             <div class="f-head"><div class="f-head-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="f-head-title">Dokument</div></div>
-            <div class="field"><label for="packageSelect">Paket <span class="req">*</span></label><div class="sel-wrap"><select name="Paket" id="packageSelect" required><option value="">Bitte wählen…</option><option value="Schnellcheck">Schnellcheck — 1 PDF (99 €)</option><option value="Starter">Starter — bis zu 2 PDFs (199 €)</option><option value="Professional">Professional — bis zu 5 PDFs (349 €)</option></select></div><div class="error-msg">Bitte Paket wählen</div><div class="form-help" id="packageHint">Bitte zuerst ein Paket auswählen.</div></div>      
-            <div class="field"><label for="dokutyp">Dokumenttyp <span class="req">*</span></label><div class="sel-wrap"><select name="Dokumenttyp" id="dokutyp" required><option value="">Bitte wählen…</option><option value="Rechnung">Rechnung</option><option value="Gutschrift">Gutschrift</option></select></div><div class="error-msg">Bitte Dokumenttyp wählen</div></div>
             <div class="field">
-              <label for="fileInput">PDF hochladen <span class="req">*</span></label>
+              <div class="field-header">
+                <label for="packageSelect">Paket <span class="req">*</span></label>
+                <div class="error-msg">Bitte Paket wählen</div>
+              </div>
+              <div class="sel-wrap"><select name="Paket" id="packageSelect" required><option value="">Bitte wählen…</option><option value="Schnellcheck">Schnellcheck — 1 PDF (99 €)</option><option value="Starter">Starter — bis zu 2 PDFs (199 €)</option><option value="Professional">Professional — bis zu 5 PDFs (349 €)</option></select></div>
+              <div class="form-help" id="packageHint">Bitte zuerst ein Paket auswählen.</div>
+            </div>      
+            <div class="field">
+              <div class="field-header">
+                <label for="dokutyp">Standard-Dokumenttyp <span class="req">*</span></label>
+                <div class="error-msg"></div>
+              </div>
+              <div class="sel-wrap"><select id="dokutyp" required><option value="Rechnung" selected>Rechnung</option><option value="Gutschrift">Gutschrift</option></select></div>
+              <div class="form-help">Vorauswahl für alle hochgeladenen PDFs.</div>
+            </div>
+            <div class="field">
+              <div class="field-header">
+                <label for="fileInput">PDF hochladen <span class="req">*</span></label>
+                <div class="error-msg" id="fileError">Ungültig</div>
+              </div>
               <div class="file-drop" id="fileDrop">
                 <input type="file" id="fileInput" name="Dokument-PDF" accept=".pdf" required multiple>
                 <div class="drop-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
                 <div class="drop-text">PDF ablegen oder klicken</div>
                 <div class="drop-hint" id="dropHint">Nur .pdf · max. 10 MB · Anzahl je nach Paket</div>
-                <div class="file-name" id="fileName"></div>
               </div>
-              <div class="error-msg" id="fileError">Bitte gültige PDF-Datei(en) gemäß Paket hochladen</div>
+              <div id="fileLimitNotice" class="f-limit-notice" style="display:none"></div>
+              <div id="fileListContainer" class="file-list-container"></div>
             </div>
           </div>
         </div>
@@ -339,8 +419,8 @@
             <div class="agb-check">
               <input type="checkbox" name="AGB_akzeptiert" id="agbAccepted" required>
               <label for="agbAccepted">Ich habe die <a href="#agb" target="_self">AGB</a> gelesen und akzeptiere sie. <span class="req">*</span></label>
+              <div class="error-msg" style="margin-left:auto; opacity:0">Pflichtfeld</div>
             </div>
-            <div class="error-msg">Bitte AGB akzeptieren, um fortzufahren</div>
           </div>
         </div>
         <div class="submit-bar">
