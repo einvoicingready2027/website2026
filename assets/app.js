@@ -45,6 +45,49 @@
   }
 })();
 
+/* ── Legal Accordions (Mobile) ─────────────────────────── */
+(function(){
+  const accordions = document.querySelectorAll('.legal-accordion');
+  const isMobile = () => window.innerWidth <= 768;
+
+  function updateAccordions() {
+    if(isMobile()) {
+      accordions.forEach(acc => acc.removeAttribute('open'));
+    } else {
+      accordions.forEach(acc => acc.setAttribute('open', ''));
+    }
+  }
+
+  // Initial check
+  updateAccordions();
+
+  // Update button text/state on click (mobile only)
+  accordions.forEach(acc => {
+    const summary = acc.querySelector('summary');
+    const toggleBtn = acc.querySelector('.legal-accordion-toggle span');
+    
+    summary.addEventListener('click', (e) => {
+      if(!isMobile()) {
+        e.preventDefault(); // Keep open on desktop
+        return;
+      }
+      // On next tick, check the 'open' state
+      setTimeout(() => {
+        if(toggleBtn) {
+          toggleBtn.textContent = acc.hasAttribute('open') ? 'Inhalt ausblenden' : 'Inhalt anzeigen';
+        }
+      }, 10);
+    });
+  });
+
+  // Handle resize (optional, but good for testing)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateAccordions, 100);
+  });
+})();
+
 /* ── Scroll reveal ───────────────────────────────────────── */
 (function(){
   const io = new IntersectionObserver(entries=>{

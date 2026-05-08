@@ -332,46 +332,104 @@ nav::before {
   .mobile-toggle { display: block; }
   .hide-sm { display: none; }
   
-  section { padding-block: 4rem; }
+  section { padding-block: 3.5rem; } /* Reduced from 4rem */
   
-  h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
+  h1 { font-size: clamp(2rem, 8vw, 2.75rem); } /* Reduced base and max */
+  h2.section-h { font-size: 1.75rem; margin-bottom: .75rem; }
   
-  .hero { padding-block: 3rem 4rem; }
-  .hero-inner { gap: 2rem; }
+  .hero { padding-block: 2.5rem 3.5rem; }
+  .hero-inner { gap: 1.5rem; }
+  .hero-kicker { margin-bottom: 1rem; padding: .35rem .85rem; font-size: .62rem; }
   
   .hero-actions { 
     flex-direction: column; 
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    gap: .75rem;
   }
-  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-actions .btn { width: 100%; justify-content: center; padding-block: .85rem; }
 
-  .bento-card, .step-card { padding: 1.5rem; }
+  .hero-panel { padding: 1.5rem; }
+  .hero-panel-wrap { padding: .35rem; }
+  .panel-label { margin-bottom: 1rem; font-size: .62rem; }
+  .check-rows { gap: .75rem; }
+  .check-name { font-size: .8rem; }
+  .check-sub { font-size: .72rem; }
+  .stat-num { font-size: 1.25rem; }
+
+  .bento-card, .step-card { padding: 1.25rem; }
+  .bento-icon { width: 32px; height: 32px; margin-bottom: 1rem; }
+  .bento-title { font-size: .95rem; }
+  .bento-desc { font-size: .875rem; }
   
   .pricing-grid { gap: 1rem; }
+  .price-card { padding: 1.5rem; }
+  .price-amt { font-size: 2.1rem; }
   
-  .form-wrap { padding: 1.5rem; border-radius: var(--radius); }
-  .f-card { padding: 1.25rem; }
+  .form-wrap { padding: 1.25rem; border-radius: var(--radius); }
+  .f-card { padding: 1.1rem; }
+  .f-head { margin-bottom: 1rem; }
   
-  .submit-bar { padding: 1rem; }
+  .submit-bar { padding: 1rem; gap: 1rem; }
+  .submit-info { font-size: .75rem; }
   
-  .footer-inner { flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
+  .footer-inner { flex-direction: column; text-align: center; gap: 1.5rem; }
+  .footer-links { justify-content: center; gap: 1rem; }
+
+  /* Legal Accordion Mobile Style */
+  .legal-accordion summary {
+    cursor: pointer;
+    list-style: none;
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+  .legal-accordion summary::-webkit-details-marker { display: none; }
+  .legal-accordion .reveal { transform: none !important; opacity: 1 !important; }
+  
+  .legal-accordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    width: 100%;
+    padding: .75rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-hard);
+    border-radius: 8px;
+    font-size: .8125rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+  }
+  .legal-accordion[open] .legal-accordion-toggle svg { transform: rotate(180deg); }
+  .legal-accordion[open] .section-sub { margin-bottom: 1rem; }
 }
 
 @media (max-width: 480px) {
   .container { padding-inline: 1rem; }
   
-  h1 { font-size: 2rem; }
+  h1 { font-size: 1.85rem; }
+  .hero-lead { font-size: 1rem; }
   
-  .hero-panel { padding: 1.25rem; }
-  .panel-stats { gap: 1rem; }
-  .stat-num { font-size: 1.25rem; }
+  .hero-panel { padding: 1.1rem; }
+  .panel-stats { gap: .75rem; margin-top: 1.5rem; padding-top: 1rem; }
+  .stat-num { font-size: 1.15rem; }
   
-  .trust-inner { gap: .75rem 1rem; }
-  .trust-item { font-size: .7rem; }
+  .trust-inner { gap: .6rem .8rem; }
+  .trust-item { font-size: .68rem; }
   
-  .bento-card:hover { transform: none; } /* Disable transform hover on tiny screens for stability */
+  .bento-card:hover { transform: none; }
+}
+
+/* Hide toggle icon on desktop */
+.legal-accordion-toggle { display: none; }
+.legal-accordion[open] summary { pointer-events: none; } /* On desktop we will keep it open */
+@media (min-width: 769px) {
+  .legal-accordion { display: block !important; }
+  .legal-accordion summary { cursor: default; }
 }
 
 
