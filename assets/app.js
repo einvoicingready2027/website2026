@@ -15,6 +15,36 @@
   if(btn) btn.addEventListener('click', ()=>{ theme=theme==='dark'?'light':'dark'; apply(theme); });
 })();
 
+/* ── Mobile Menu Toggle ─────────────────────────────────── */
+(function(){
+  const toggle = document.getElementById('mobileToggle');
+  const menu   = document.getElementById('mobileMenu');
+  const body   = document.body;
+  const links  = document.querySelectorAll('.mobile-menu-inner a');
+
+  if(toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('active');
+      toggle.classList.toggle('active');
+      body.style.overflow = isOpen ? 'hidden' : '';
+      
+      // Toggle icon
+      toggle.innerHTML = isOpen 
+        ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
+        : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        toggle.classList.remove('active');
+        body.style.overflow = '';
+        toggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+      });
+    });
+  }
+})();
+
 /* ── Scroll reveal ───────────────────────────────────────── */
 (function(){
   const io = new IntersectionObserver(entries=>{
