@@ -81,14 +81,14 @@
       <div class="hero-panel">
         <div class="panel-label">Auszug · Prüfprotokoll</div>
         <ul class="check-rows">
-          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Dokumentstruktur validiert</div><div class="check-sub">Strukturprüfung der XML-Repräsentation erfolgreich</div></div></li>
-          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">EN 16931 Pflichtangaben</div><div class="check-sub">Abgleich der semantischen Datenmodelle durchgeführt</div></div></li>
-          <li class="check-row"><span class="check-dot warn">!</span><div><div class="check-name">ZUGFeRD-Version</div><div class="check-sub">Version 2.0 erkannt - mindestens 2.2 empfohlen</div></div></li>
-          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Steuerkennzeichen</div><div class="check-sub">Validierung gegen UStG-Vorgaben abgeschlossen</div></div></li>
-          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Format-Compliance</div><div class="check-sub">Dokument erfüllt Anforderungen der Zielnorm</div></div></li>
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">EN 16931 Validierung</div><div class="check-sub">Semantische Datenmodellprüfung erfolgreich</div></div></li>
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Codelisten &amp; Schemata</div><div class="check-sub">Maßeinheiten &amp; Steuerkategorien (UN/CEFACT) konform</div></div></li>
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Profil-Check (ZUGFeRD)</div><div class="check-sub">Version 2.4 erkannt (revisionssicher)</div></div></li>
+          <li class="check-row"><span class="check-dot warn">!</span><div><div class="check-name">XRechnung Spezifikation</div><div class="check-sub">Leitweg-ID fehlt für B2G-Versand</div></div></li>
+          <li class="check-row"><span class="check-dot ok">✓</span><div><div class="check-name">Compliance-Status</div><div class="check-sub">Dokument erfüllt Anforderungen der Zielnorm</div></div></li>
         </ul>
         <div class="panel-stats">
-          <div><div class="stat-num">EXTENDED</div><div class="stat-lbl">Prüfprofil</div></div>
+          <div><div class="stat-num">ZUGFeRD 2.4</div><div class="stat-lbl">Prüfprofil</div></div>
           <div><div class="stat-num">Status</div><div class="stat-lbl">Validiert</div></div>
         </div>
       </div>
@@ -100,9 +100,7 @@
   <div class="container trust-inner stagger">
     <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>DSGVO-konform</div>
     <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Persönliche Rückmeldung nach fachlicher Sichtung</div>
-    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Prüfung gemäß EN 16931, XRechnung, ZUGFeRD, PEPPOL BIS 3.0</div>
-    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Festpreise mit klar definiertem Umfang</div>
-    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>§ 19 UStG — keine MwSt.</div>
+    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Prüfung gemäß EN 16931, XRechnung, ZUGFeRD</div>
   </div>
 </div>
 
@@ -116,32 +114,17 @@
     <div class="bento stagger">
       <div class="bento-card w6">
         <div class="bento-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h3 class="bento-title">EN 16931 Konformität</h3>
-        <p class="bento-desc">Vollständige Prüfung der Pflichtangaben gemäß europäischer Norm EN 16931 als Grundlage für XRechnung und ZUGFeRD in Deutschland.</p>
+        <h3 class="bento-title">EN 16931 Prüfung (Zukunftssicher)</h3>
+        <p class="bento-desc">Vollständige Validierung gegen die europäische Kernnorm EN 16931. Damit stellen Sie sicher, dass Ihre Belege die Basis für alle gängigen Formate wie <strong>XRechnung</strong>, <strong>ZUGFeRD</strong> (ab 2.4) und <strong>Peppol</strong> erfüllen.</p>
       </div>
       <div class="bento-card w6">
-        <div class="bento-icon" style="background:var(--pale-green);color:var(--pale-green-t)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h3 class="bento-title">PEPPOL BIS 3.0 Prüfung</h3>
-        <p class="bento-desc">Prüfung Ihrer Dokumente auf PEPPOL-BIS-3.0-Konformität einschließlich profil- und strukturbezogener Anforderungen.</p>
-      </div>
-      <div class="bento-card w4">
-        <div class="bento-icon" style="background:var(--pale-yellow);color:var(--pale-yellow-t)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="13 2 13 9 20 9"/><path d="M20 14.5V7l-5-5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h6"/><circle cx="17" cy="17" r="3"/><path d="m21 21-1.5-1.5"/></svg></div>
-        <h3 class="bento-title">XRechnung-Tauglichkeit</h3>
-        <p class="bento-desc">Analyse der erforderlichen Felder einschließlich Leitweg-ID, Käuferreferenz und Profilvalidierung.</p>
-      </div>
-      <div class="bento-card w4">
-        <div class="bento-icon" style="background:var(--pale-red);color:var(--pale-red-t)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
-        <h3 class="bento-title">ZUGFeRD 2.2+ Prüfung</h3>
-        <p class="bento-desc">Validierung der eingesetzten ZUGFeRD-Version. Ältere Versionen (1.0, 2.0) sind seit 2025 nicht mehr zulässig.</p>
-      </div>
-      <div class="bento-card w4">
-        <div class="bento-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
-        <h3 class="bento-title">Steuerliche Anforderungen</h3>
-        <p class="bento-desc">Kontrolle von USt-ID, Steuernummer, Steuerkennzeichen und Steuerbeträgen gemäß § 14 UStG.</p>
+        <div class="bento-icon" style="background:var(--pale-green);color:var(--pale-green-t)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <h3 class="bento-title">Rechtliche Pflichtangaben (§ 14 UStG)</h3>
+        <p class="bento-desc">Abgleich aller umsatzsteuerrechtlichen Mindestangaben. Ein besonderer Fokus liegt auf der korrekten Verwendung vorgeschriebener <strong>Codelisten</strong> (z. B. Steuerkategorien, Maßeinheiten), welche für die E-Rechnung zwingend erforderlich sind, auf herkömmlichen PDF-Belegen jedoch oft fehlen.</p>
       </div>
       <div class="bento-card w12">
-        <h3 class="bento-title">Individueller Prüfbericht</h3>
-        <p class="bento-desc">Sie erhalten einen strukturierten Befundbericht zu Ihrem konkreten Dokumentbestand. Hinweise und Prioritäten sind so aufbereitet, dass Fachabteilung, Entwicklung und Steuerberatung unmittelbar damit arbeiten können.</p>
+        <h3 class="bento-title">Detaillierter Prüfbericht mit Experten-Einordnung</h3>
+        <p class="bento-desc">Sie erhalten keinen automatisierten "Pass/Fail"-Scan, sondern eine fachliche Auswertung. Ich identifiziere strukturelle Fehler in Ihren Profilen und gebe konkrete Handlungsempfehlungen für Ihre IT oder Ihren ERP-Dienstleister, um die E-Rechnungs-Compliance dauerhaft zu sichern.</p>
       </div>
     </div>
   </div>
@@ -448,8 +431,8 @@
       <details><summary>Was müssen Lieferanten und Rechnungsempfänger praktisch umsetzen?</summary><div class="faq-body">Lieferanten müssen Rechnungen in einem zulässigen strukturierten Format erzeugen. Empfänger müssen diese Formate technisch empfangen, archivieren und in den Rechnungsprozess integrieren. Zusätzlich sollten Mapping, Pflichtangaben je Geschäftsvorfall und interne Freigabeprozesse überprüft werden.</div></details>
 
       <div class="faq-group-title">Fragen zur Dienstleistung</div>
-      <details><summary>Was ist eine E-Rechnung gemäß EN 16931?</summary><div class="faq-body">Eine E-Rechnung im Sinne des deutschen Gesetzgebers ist eine Rechnung in einem strukturierten elektronischen Format, das die europäische Norm EN 16931 erfüllt. Seit dem 1. Januar 2025 sind strukturierte Formate wie XRechnung und ZUGFeRD (ab Version 2.2) im B2B-Kontext relevant. Ein einfaches PDF ohne strukturierte Daten gilt nicht als E-Rechnung.</div></details>
-      <details><summary>Was ist der Unterschied zwischen XRechnung und ZUGFeRD?</summary><div class="faq-body">XRechnung ist ein rein XML-basiertes Format ohne visuelle Darstellung — es richtet sich vor allem an die öffentliche Verwaltung (B2G). ZUGFeRD ist ein hybrides Format: eine lesbare PDF-Seite mit eingebetteter XML-Datei. Für den B2B-Bereich ist ZUGFeRD ab Version 2.2 zulässig.</div></details>
+      <details><summary>Was ist eine E-Rechnung gemäß EN 16931?</summary><div class="faq-body">Eine E-Rechnung im Sinne des deutschen Gesetzgebers ist eine Rechnung in einem strukturierten elektronischen Format, das die europäische Norm EN 16931 erfüllt. Seit dem 1. Januar 2025 sind strukturierte Formate wie XRechnung und ZUGFeRD (ab Version 2.4) im B2B-Kontext relevant. Ein einfaches PDF ohne strukturierte Daten gilt nicht als E-Rechnung.</div></details>
+      <details><summary>Was ist der Unterschied zwischen XRechnung und ZUGFeRD?</summary><div class="faq-body">XRechnung ist ein rein XML-basiertes Format ohne visuelle Darstellung — es richtet sich vor allem an die öffentliche Verwaltung (B2G). ZUGFeRD ist ein hybrides Format: eine lesbare PDF-Seite mit eingebetteter XML-Datei. Für den B2B-Bereich ist ZUGFeRD ab Version 2.4 zulässig.</div></details>
       <details><summary>Prüfen Sie auch PEPPOL BIS 3.0?</summary><div class="faq-body">Ja. Neben EN 16931, XRechnung und ZUGFeRD prüfe ich auch PEPPOL BIS 3.0 auf struktur- und profilbezogene Anforderungen.</div></details>
       <details><summary>Kann ich auch Gutschriften prüfen lassen?</summary><div class="faq-body">Ja. Das Formular unterstützt sowohl Rechnungen als auch Gutschriften. Die Prüfkriterien gelten für beide Dokumenttypen gleichermaßen.</div></details>
       <details><summary>Fallen Steuern auf den Preis an?</summary><div class="faq-body">Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen. Die angegebenen Preise sind Festpreise.</div></details>
