@@ -8,7 +8,7 @@
  */
 
 // --- KONFIGURATION ---
-$n8n_webhook_url = 'https://n8n.srv1622881.hstgr.cloud/webhook-test/4a554bdc-c0cb-4f61-bb5c-f5360e5bc53c';
+$n8n_webhook_url = 'https://n8n.srv1622881.hstgr.cloud/webhook/4a554bdc-c0cb-4f61-bb5c-f5360e5bc53c';
 $api_key = 'sasdjkKSAKLASKxx191##91921jasdkskaAKKAKSJD19111dasda';
 // ----------------------
 
