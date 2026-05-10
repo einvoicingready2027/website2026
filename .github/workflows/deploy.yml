@@ -18,6 +18,8 @@ jobs:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.IONOS_SFTP }}
+          protocol: sftp
+          port: 22
           # Pfad auf deinem IONOS Server
           server-dir: /private/website/
           # Welche Dateien sollen ausgeschlossen werden?
