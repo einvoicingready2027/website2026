@@ -12,6 +12,17 @@ $n8n_webhook_url = 'https://n8n.srv1622881.hstgr.cloud/webhook-test/4a554bdc-c0c
 $api_key = 'sasdjkKSAKLASKxx191##91921jasdkskaAKKAKSJD19111dasda';
 // ----------------------
 
+// CORS-Header für IONOS Stabilität
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, x-api-key");
+
+// Handle OPTIONS Preflight
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
 // Nur POST-Anfragen erlauben
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
