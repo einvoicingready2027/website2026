@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.IONOS_SFTP }}
           port: 22
           # Wir listen die Dateien explizit auf, um den .git Ordner zu vermeiden
-          source: "index.html,proxy.php,.htaccess,assets/**"
+          source: "index.html,proxy.php,assets/**"
           target: "/private/website/"
           # Verhindert, dass die Ordnerstruktur lokal (z.B. .) mit kopiert wird
           strip_components: 0 
