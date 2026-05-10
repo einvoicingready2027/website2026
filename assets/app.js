@@ -111,7 +111,7 @@
 })();
 
 /* ── Webhook ─────────────────────────────────────────────── */
-const WEBHOOK_URL = 'https://n8n.srv1622881.hstgr.cloud/webhook-test/4a554bdc-c0cb-4f61-bb5c-f5360e5bc53c';
+const WEBHOOK_URL = 'proxy.php';
 
 let _zaehler = 0;
 function genVorgangsId(){
@@ -419,8 +419,7 @@ if(form){
       const res = await fetch(WEBHOOK_URL,{
         method:'POST',
         headers:{
-          'Content-Type':'application/json',
-          'x-api-key': 'sasdjkKSAKLASKxx191##91921jasdkskaAKKAKSJD19111dasda'
+          'Content-Type':'application/json'
         },
         body:JSON.stringify(data)
       });
