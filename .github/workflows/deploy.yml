@@ -6,6 +6,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
@@ -15,7 +17,7 @@ jobs:
         with:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
+          password: ${{ secrets.IONOS_SFTP }}
           # Pfad auf deinem IONOS Server
           server-dir: /private/website/
           # Welche Dateien sollen ausgeschlossen werden?
