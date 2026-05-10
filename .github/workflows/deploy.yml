@@ -6,26 +6,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      - name: 🚀 Sync files to IONOS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.SFTP_SERVER }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.IONOS_SFTP }}
-          protocol: ftps
-          port: 22
-          # Pfad auf deinem IONOS Server
-          server-dir: /private/website/
-          # Dateien ausschließen
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/README.md
-            **/.cursor/**
-            **/.htaccess
+      - name: 🚀 Sync files to IONOS (lftp)
+        env:
+          # Wir nutzen Umgebungsvariablen für maximale Sicherheit und Sonderzeichen-Stabilität
+          PASSWORD: ${{ secrets.IONOS_SFTP }}
+          USERNAME: ${{ secrets.SFTP_USERNAME }}
+          SERVER: ${{ secrets.SFTP_SERVER }}
+        run: |
+          lftp -c "set sftp:auto-confirm yes; \
+                  open -u $USERNAME,$PASSWORD sftp://$SERVER:22; \
+                  mirror -R \
+                  --exclude .git/ \
+                  --exclude .github/ \
+                  --exclude .cursor/ \
+                  --exclude README.md \
+                  --exclude .htaccess \
+                  . /private/website/; \
+                  quit"
