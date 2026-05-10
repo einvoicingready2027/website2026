@@ -111,7 +111,7 @@
 })();
 
 /* ── Webhook ─────────────────────────────────────────────── */
-const WEBHOOK_URL = 'proxy.php';
+const WEBHOOK_URL = './proxy.php';
 
 let _zaehler = 0;
 function genVorgangsId(){
