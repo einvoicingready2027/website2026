@@ -1,0 +1,26 @@
+name: Deploy to IONOS (Manual)
+
+on:
+  workflow_dispatch: # Erlaubt den manuellen Start über den "Actions" Tab
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Sync files to IONOS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SFTP_SERVER }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          # Pfad auf deinem IONOS Server (meistens / oder ein Unterordner)
+          server-dir: ./
+          # Welche Dateien sollen ausgeschlossen werden?
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/README.md
+            **/.cursor/**
