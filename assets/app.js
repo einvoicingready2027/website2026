@@ -156,7 +156,7 @@ function refreshPkgUi(){
   const lim = LIMITS[pkg];
   hideLimitNotice();
   if(lim){
-    if(pkgHint)  pkgHint.textContent  = pkg + ': bis zu ' + lim + ' PDF' + (lim>1?'s':'') + ' pro Einreichung.';
+    if(pkgHint)  pkgHint.textContent  = pkg + ': insgesamt ' + lim + ' PDF' + (lim>1?'s':'') + ' pro Einreichung.';
     if(dropHint) dropHint.textContent = 'Nur .pdf · max. 10 MB je Datei · ' + lim + ' PDF' + (lim>1?'s':'') + ' im Paket';
     if(fileInput) {
       fileInput.disabled = false;
@@ -260,6 +260,7 @@ function validateFiles(){
   let valid=true, msg='Bitte gültige PDF-Datei(en) gemäß Paket hochladen';
   if(!pkg)                        { valid=false; msg='Bitte zuerst ein Paket auswählen'; }
   else if(!files||files.length===0){ valid=false; msg='Bitte mindestens eine PDF hochladen'; }
+  else if(files.length < lim)     { valid=false; msg='Für das Paket "'+pkg+'" müssen insgesamt '+lim+' PDFs hochgeladen werden. Bitte fügen Sie noch '+(lim - files.length)+' weitere Datei(en) hinzu.'; }
   else if(files.length>lim)       { valid=false; msg='Für '+pkg+' sind maximal '+lim+' PDF'+(lim>1?'s':'')+' erlaubt'; }
   else if(files.some(item=>!item.file.name.toLowerCase().endsWith('.pdf'))){ valid=false; msg='Nur PDF-Dateien erlaubt'; }
   field.classList.toggle('has-error',!valid);
