@@ -389,10 +389,18 @@ if(form){
 
   form.addEventListener('submit', async e=>{
     e.preventDefault();
+    
+    // 1. Alle Validierungen durchführen
     let ok=true;
     form.querySelectorAll('input[required], select[required]').forEach(el=>{ if(!validateField(el)) ok=false; });
     if(!validateFiles()) ok=false;
-    if(!ok) return;
+
+    // 2. Abbrechen, wenn nicht valide (bevor Dateiverarbeitung startet)
+    if(!ok) {
+      const firstError = form.querySelector('.field.has-error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
 
     submitBtn.disabled=true; submitBtn.textContent='Wird eingereicht…';
 
