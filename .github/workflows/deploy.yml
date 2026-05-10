@@ -16,8 +16,8 @@ jobs:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          # Pfad auf deinem IONOS Server (meistens / oder ein Unterordner)
-          server-dir: ./
+          # Pfad auf deinem IONOS Server
+          server-dir: /private/website/
           # Welche Dateien sollen ausgeschlossen werden?
           exclude: |
             **/.git*
